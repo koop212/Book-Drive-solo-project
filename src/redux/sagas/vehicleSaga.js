@@ -11,8 +11,18 @@ function* fetchVehicle() {
     }
 }
 
+function* addVehicle(action) {
+    try{
+        yield axios.post('/api/vehicle', action.payload);
+        yield put ({type: 'FETCH_VEHICLE'})
+    }catch(error) {
+        console.log('Error in addVehicle', error);
+    }
+}
+
 function* vehicleSaga() {
     yield takeLatest('FETCH_VEHICLE', fetchVehicle);
+    yield takeLatest('ADD_VEHICLE', addVehicle);
 }
 
 export default vehicleSaga;

@@ -31,6 +31,9 @@ const Nav = (props) => (
       <Link className="nav-link" to="/vehicle">
         Car List
       </Link>
+      <Link className="nav-link" to="/vehicleform">
+        Vehicle Form
+      </Link>
     </div>
   </div>
 );
