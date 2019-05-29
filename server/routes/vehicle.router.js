@@ -15,16 +15,20 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    let car = req.body;
-    let queryText = `INSERT INTO vehicle ("year", "make", "model", "description", "price", "city", "state", "zip")
-                    VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`;
-    pool.query(queryText, [car.year, car.make, car.model, car.description, car.price, car.city, car.state, car.zip])
-    .then(() => {
-        res.sendStatus(201);
-    }).catch(error => {
-        console.log('Error in vehicle POST route', error);
-        res.sendStatus(500);
-    })
+    if(req.isAuthenticated()) {
+        let car = req.body;
+        let queryText = `INSERT INTO vehicle ("year", "make", "model", "description", "price", "city", "state", "zip")
+                        VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`;
+        pool.query(queryText, [car.year, car.make, car.model, car.description, car.price, car.city, car.state, car.zip])
+        .then(() => {
+            res.sendStatus(201);
+        }).catch(error => {
+            console.log('Error in vehicle POST route', error);
+            res.sendStatus(500);
+        })
+    } else {
+        res.sendStatus(403);
+    }
 })
 
 module.exports = router;

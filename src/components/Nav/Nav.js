@@ -32,7 +32,10 @@ const Nav = (props) => (
         Car List
       </Link>
       <Link className="nav-link" to="/vehicleform">
-        Vehicle Form
+        List your car
+      </Link>
+      <Link className="nav-link" to="/carinfo">
+        Car Bio
       </Link>
     </div>
   </div>

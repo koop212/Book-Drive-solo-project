@@ -18,6 +18,7 @@ import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import CarList from '../CarList/CarList';
 import VehicleForm from '../VehicleForm/VehicleForm';
+import CarInfo from '../CarInfo/CarInfo';
 
 
 
@@ -47,6 +48,12 @@ class App extends Component {
               exact
               path="/vehicle"
               component={CarList}
+            />
+
+            <Route
+              exact
+              path="/carinfo"
+              component={CarInfo}
             />
 
             
