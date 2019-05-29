@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import CarCard from '../CarCard/CarCard';
 
 class CarList extends Component {
 
@@ -13,14 +14,14 @@ class CarList extends Component {
             <div>
                 <div>
                     {this.props.reduxState.vehicleReducer.map((car, i) => {
-                        return <p key={i}>{car.year},{car.make},{car.model}</p>
+                        return <CarCard car={car}/>
                     })}
                 </div>
-                <div>
+                {/* <div>
                     {this.props.reduxState.imageReducer.map((image) => {
-                        return <img src={image.image_url} />
+                        return <CarCard image={image}/>
                     })}
-                </div>
+                </div> */}
 
             </div>
         )
