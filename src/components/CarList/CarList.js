@@ -17,12 +17,6 @@ class CarList extends Component {
                         return <CarCard car={car}/>
                     })}
                 </div>
-                {/* <div>
-                    {this.props.reduxState.imageReducer.map((image) => {
-                        return <CarCard image={image}/>
-                    })}
-                </div> */}
-
             </div>
         )
     }

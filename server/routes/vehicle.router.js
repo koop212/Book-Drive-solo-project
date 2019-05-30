@@ -17,9 +17,9 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     if(req.isAuthenticated()) {
         let car = req.body;
-        let queryText = `INSERT INTO vehicle ("year", "make", "model", "description", "price", "city", "state", "zip")
-                        VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`;
-        pool.query(queryText, [car.year, car.make, car.model, car.description, car.price, car.city, car.state, car.zip])
+        let queryText = `INSERT INTO vehicle ("year", "make", "model", "description", "price", "city", "state", "zip", "user_id")
+                        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);`;
+        pool.query(queryText, [car.year, car.make, car.model, car.description, car.price, car.city, car.state, car.zip, req.user.id])
         .then(() => {
             res.sendStatus(201);
         }).catch(error => {
