@@ -40,4 +40,12 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+    console.log('is authenticated?', req.isAuthenticated());
+    console.log('req.params:', req.params);
+    let queryText = `DELETE FROM "user", "vehicle" WHERE "user"."id" = $1`
+    
+    
+})
+
 module.exports = router;

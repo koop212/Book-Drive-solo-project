@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import CarList from '../CarList/CarList';
 import VehicleForm from '../VehicleForm/VehicleForm';
 import CarInfo from '../CarInfo/CarInfo';
+import ActivityPage from '../ActivityPage/ActivityPage';
 
 
 
@@ -79,6 +80,13 @@ class App extends Component {
               path="/vehicleform"
               component={VehicleForm}
             />
+
+            <ProtectedRoute
+              exact
+              path="/activity"
+              component={ActivityPage}
+            />
+
       
             
 
