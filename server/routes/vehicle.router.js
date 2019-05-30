@@ -1,6 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 router.get('/', (req, res) => {
     // Get all images
@@ -30,5 +31,19 @@ router.post('/', (req, res) => {
         res.sendStatus(403);
     }
 })
+
+router.get('/owner', (req, res) => {
+    let queryText = `SELECT vehicle.make, vehicle.model FROM vehicle
+                    JOIN "user" ON vehicle.user_id = "user".id
+                    WHERE "user".id = $1;`;
+    pool.query(queryText, [req.user.id])
+        .then((results) => {
+            console.log('results.row:', results.rows);
+            res.send(results.rows)
+        }).catch(error => {
+            console.log('error in owner car GET:', error);
+            res.sendStatus(500);
+        });
+});
 
 module.exports = router;

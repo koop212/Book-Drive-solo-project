@@ -11,6 +11,16 @@ function* fetchVehicle() {
     }
 }
 
+function* fetchOwnerVehicle(action) {
+    try {
+        let vehicleOwnerResponse = yield axios.get(`/api/vehicle/owner`);
+        console.log('in fetchOwnerVehicle',vehicleOwnerResponse);
+        yield put({ type: 'SET_OWNER_VEHICLE', payload: vehicleOwnerResponse.data })
+    } catch (error) {
+        console.log('Error in fetchOwnerVehicle');
+    }
+}
+
 function* addVehicle(action) {
     try{
         yield axios.post('/api/vehicle', action.payload);
@@ -23,6 +33,7 @@ function* addVehicle(action) {
 function* vehicleSaga() {
     yield takeLatest('FETCH_VEHICLE', fetchVehicle);
     yield takeLatest('ADD_VEHICLE', addVehicle);
+    yield takeLatest('FETCH_OWNER_VEHICLE', fetchOwnerVehicle);
 }
 
 export default vehicleSaga;

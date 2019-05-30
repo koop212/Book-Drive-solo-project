@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class VehicleReview extends Component {
     render() {
         return(
-            <p>show rating</p>
+            <p>rate vehicle</p>
         )
     }
 }
