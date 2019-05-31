@@ -11,6 +11,12 @@ class ActivityPage extends Component {
         this.props.dispatch({type: 'FETCH_OWNER_VEHICLE'})
     }
 
+    deleteVehicle = (carId) => {
+        console.log('deleteVehicle function', carId);
+        this.props.dispatch({type: 'DELETE_VEHICLE', payload: carId});
+        // this.props.dispatch({type: 'FETCH_VEHICLE'})
+    }
+
     render() {
         return(
             <div className="activity">
@@ -21,7 +27,7 @@ class ActivityPage extends Component {
                 </div>
                 <ul>
                     {this.props.reduxState.vehicleOwnerReducer.map((car, i) => {
-                        return <li>{car.make} {car.model}</li>
+                        return (<li key={i}>{car.make} {car.model} <button onClick={() => this.deleteVehicle(car.carId)}>Remove</button></li>)
                     })}
                 </ul>
             </div>

@@ -3,6 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
+
 router.get('/', (req, res) => {
     // Get all images
     let queryText = `SELECT * FROM vehicle;`;
@@ -15,6 +16,7 @@ router.get('/', (req, res) => {
         });
 });
 
+// POST information of vehicle to list
 router.post('/', (req, res) => {
     if(req.isAuthenticated()) {
         let car = req.body;
@@ -32,6 +34,7 @@ router.post('/', (req, res) => {
     }
 })
 
+//GET only vehicle that belongs to logged in user
 router.get('/owner', (req, res) => {
     let queryText = `SELECT vehicle.make, vehicle.model FROM vehicle
                     JOIN "user" ON vehicle.user_id = "user".id
@@ -45,5 +48,19 @@ router.get('/owner', (req, res) => {
             res.sendStatus(500);
         });
 });
+
+//DELETE vehicle belonging to logged in user
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+    console.log('is authenticated?', req.isAuthenticated());
+    console.log('req.body:', req.body);
+    let queryText = `DELETE FROM "vehicle" WHERE "vehicle"."user_id" = $1 AND "vehicle"."id" = $2;`;
+    pool.query(queryText, [req.user.id, req.body.id])
+    .then(() => {
+        res.sendStatus(200);
+    }).catch(error => {
+        console.log('Error in delete route', error);
+        res.sendStatus(500);
+    })
+})
 
 module.exports = router;

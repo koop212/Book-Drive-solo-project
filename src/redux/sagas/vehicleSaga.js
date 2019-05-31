@@ -30,10 +30,22 @@ function* addVehicle(action) {
     }
 }
 
+function* deleteVehicle(action) {
+    try{
+        console.log('in deleteSaga', action.payload);
+        yield axios.delete(`/api/vehicle/${action.payload}`);
+        yield put({type: 'FETCH_VEHICLE'});
+    }catch(error) {
+        console.log('Error in Delete saga', error);
+        
+    }
+}
+
 function* vehicleSaga() {
     yield takeLatest('FETCH_VEHICLE', fetchVehicle);
     yield takeLatest('ADD_VEHICLE', addVehicle);
     yield takeLatest('FETCH_OWNER_VEHICLE', fetchOwnerVehicle);
+    yield takeLatest('DELETE_VEHICLE', deleteVehicle);
 }
 
 export default vehicleSaga;
