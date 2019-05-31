@@ -12,10 +12,16 @@ const UserPage = (props) => (
     <h1 id="welcome">
       Welcome, { props.user.username }!
     </h1>
-    <label>Start Date</label>
-    <StartDate />
-    <label>End Date</label>
-    <EndDate />
+    <div>
+      <label>Start Date</label>
+      <br/>
+      <StartDate />
+    </div>
+    <div>
+      <label>End Date</label>
+      <br />
+      <EndDate />
+    </div>
     <p>Your ID is: {props.user.id}</p>
     <LogOutButton className="log-in" />
   </div>

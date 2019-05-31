@@ -14,7 +14,8 @@ class CarList extends Component {
             <div>
                 <div>
                     {this.props.reduxState.vehicleReducer.map((car, i) => {
-                        return <CarCard car={car}/>
+                        //Show list of all cars
+                        return <CarCard key={i} car={car}/>
                     })}
                 </div>
             </div>

@@ -33,11 +33,10 @@ function* addVehicle(action) {
 function* deleteVehicle(action) {
     try{
         console.log('in deleteSaga', action.payload);
-        yield axios.delete(`/api/vehicle/${action.payload}`);
-        yield put({type: 'FETCH_VEHICLE'});
+        yield axios.delete(`/api/vehicle/${action.payload.id}`);
+        yield put({type: 'FETCH_OWNER_VEHICLE'});
     }catch(error) {
         console.log('Error in Delete saga', error);
-        
     }
 }
 

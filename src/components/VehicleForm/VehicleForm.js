@@ -11,21 +11,24 @@ class VehicleForm extends Component {
         price: 0,
         city: '',
         state: '',
-        zip: ''
+        zip: '',
+        image_url: ''
     }
 
+    //Get value of inputs
     handleChangeFor = (propertyName) => (event) => {
         this.setState({
             [propertyName]: event.target.value
         })
     }
 
+    //Submit informations of vehicle
     handleSubmit = (event) => {
         event.preventDefault();
         console.log(this.state);
         let car = this.state;
-        if(car.year == '' && car.make == '' && car.model == '' && car.description == '' 
-        && car.price == '' && car.city == '' && car.state == '' && car.zip == '') {
+        if(car.year === '' && car.make === '' && car.model === '' && car.description === '' 
+        && car.price === '' && car.city === '' && car.state === '' && car.zip === '' && car.image_url === '') {
             return alert('Please fill in the blank')
         } else {
             this.props.dispatch({type: 'ADD_VEHICLE', payload: this.state});
@@ -45,6 +48,7 @@ class VehicleForm extends Component {
                     <input onChange={this.handleChangeFor('city')} placeholder="City" />
                     <input onChange={this.handleChangeFor('state')} placeholder="State" />
                     <input onChange={this.handleChangeFor('zip')} placeholder="Zip" />
+                    <input onChange={this.handleChangeFor('image_url')} placeholder="Add image url" />
                     <button onClick={this.handleSubmit}>Add Vehicle</button>
                 </form>
             </div>
