@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
+import StartDate from '../StartDate/StartDate';
+import EndDate from '../EndDate/EndDate';
 
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
@@ -10,6 +12,10 @@ const UserPage = (props) => (
     <h1 id="welcome">
       Welcome, { props.user.username }!
     </h1>
+    <label>Start Date</label>
+    <StartDate />
+    <label>End Date</label>
+    <EndDate />
     <p>Your ID is: {props.user.id}</p>
     <LogOutButton className="log-in" />
   </div>
