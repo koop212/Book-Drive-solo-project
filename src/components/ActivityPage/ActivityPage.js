@@ -23,7 +23,7 @@ class ActivityPage extends Component {
         
         return(
             <div className="activity">
-                <pre>{JSON.stringify(this.props.reduxState.vehicleOwnerReducer)}</pre>
+                {/* <pre>{JSON.stringify(this.props.reduxState.vehicleOwnerReducer)}</pre> */}
                 <h2 className="notification">Notifications</h2>
                 <div>
                     <VehicleReview />

@@ -40,12 +40,23 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
-router.delete('/:id', rejectUnauthenticated, (req, res) => {
-    console.log('is authenticated?', req.isAuthenticated());
-    console.log('req.params:', req.params);
-    let queryText = `DELETE FROM "user", "vehicle" WHERE "user"."id" = $1`
-    
-    
+router.put('/:id', (req, res) => {
+  if (req.isAuthenticated()) {
+  console.log('in update email route',req.body.email);
+  console.log(req.params.id);
+
+  let queryText = `UPDATE "user" SET "email" = $1 WHERE "user"."id"= $2`
+  pool.query(queryText, [req.body.email, req.params.id])
+  .then(result => {
+    console.log(result);
+    res.sendStatus(200)
+  }).catch(error => {
+    console.log('Error in Update route', error);
+    res.sendStatus(500);
+  })
+  }
 })
+
+
 
 module.exports = router;

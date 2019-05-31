@@ -20,6 +20,7 @@ import CarList from '../CarList/CarList';
 import VehicleForm from '../VehicleForm/VehicleForm';
 import CarInfo from '../CarInfo/CarInfo';
 import ActivityPage from '../ActivityPage/ActivityPage';
+import AccountPage from '../AccountPage/AccountPage';
 
 
 
@@ -87,6 +88,11 @@ class App extends Component {
               component={ActivityPage}
             />
 
+            <ProtectedRoute
+              exact
+              path="/account"
+              component={AccountPage}
+            />
       
             
 
