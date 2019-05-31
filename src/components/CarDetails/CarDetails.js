@@ -4,16 +4,24 @@ import { connect } from 'react-redux';
 class CarDetails extends Component {
 
     componentDidMount() {
-        this.props.dispatch({ type: 'FETCH_VEHICLE_DETAILS'})
-        console.log(this.props.match);
+        this.props.dispatch({ type: 'FETCH_VEHICLE_DETAILS', payload: this.props.match.params.id })
+        console.log('in Match route', this.props.match.params.id);
         
     }
 
     render() {
+        console.log('vehicle details:', this.props.reduxState.vehicleDetailsReducer);
+        
         return(
             <p>Details goes here</p>
         )
     }
 }
 
-export default connect()(CarDetails);
+const mapStateToProps = (reduxState) => {
+    return {
+        reduxState
+    }
+}
+
+export default connect(mapStateToProps)(CarDetails);

@@ -42,8 +42,8 @@ function* deleteVehicle(action) {
 
 function* fetchCarDetails(action) {
     try{
-        console.log('In fetchCarDetails', action.payload.data);
-        let response = yield axios.get(`/api/vehicle/cardetail/${action.payload.id}`);
+        console.log('In action fetchCarDetails', action.payload);
+        let response = yield axios.get(`/api/vehicle/cardetails/${action.payload}`);
         yield put({ type: 'SET_VEHICLE_DETAILS', payload: response.data})
     }catch(error) {
         console.log('Error in fetchCarDetails', error);

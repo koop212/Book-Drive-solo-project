@@ -73,9 +73,9 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
     })
 })
 
-router.get('/cardetail/:id', (req, res) => {
+router.get('/cardetails/:id', (req, res) => {
     console.log('In get route for vehicle details', req.params.id);
-    let queryText = `SELECT vehicle.id, image.image_url, vehicle.user_id FROM vehicle
+    let queryText = `SELECT vehicle.*, image.image_url FROM vehicle
                     JOIN image ON image.vehicle_id = vehicle.id
                     WHERE vehicle.id = $1;`;
     pool.query(queryText, [req.params.id])
