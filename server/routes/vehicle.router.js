@@ -73,4 +73,18 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
     })
 })
 
+router.get('/cardetail/:id', (req, res) => {
+    console.log('In get route for vehicle details', req.params.id);
+    let queryText = `SELECT vehicle.id, image.image_url, vehicle.user_id FROM vehicle
+                    JOIN image ON image.vehicle_id = vehicle.id
+                    WHERE vehicle.id = $1;`;
+    pool.query(queryText, [req.params.id])
+    .then(result => {
+        console.log('result from GET vehicle details', result.rows);
+        res.send(result.rows);
+    }).catch(error => {
+        res.sendStatus(500);
+    })
+})
+
 module.exports = router;

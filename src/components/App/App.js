@@ -18,7 +18,7 @@ import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import CarList from '../CarList/CarList';
 import VehicleForm from '../VehicleForm/VehicleForm';
-import CarInfo from '../CarInfo/CarInfo';
+import CarDetails from '../CarDetails/CarDetails';
 import ActivityPage from '../ActivityPage/ActivityPage';
 import AccountPage from '../AccountPage/AccountPage';
 
@@ -54,8 +54,8 @@ class App extends Component {
 
             <Route
               exact
-              path="/carinfo"
-              component={CarInfo}
+              path="/cardetails/:id"
+              component={CarDetails}
             />
 
             

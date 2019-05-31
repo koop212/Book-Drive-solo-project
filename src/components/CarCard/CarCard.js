@@ -3,21 +3,19 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import '../CarCard/CarCard.css';
 import { Card } from '@material-ui/core';
-// import OneImage from '../OneImage/OneImage';
 
 
 class CarCard extends Component {
 
     // Route to Car info page when clicking on car image
-    handleClick = (event) => {
-        event.preventDefault();
-        this.props.history.push('/carinfo')
+    handleClick = (id) => {
+        this.props.history.push(`/cardetails/${id}`)
     }
 
 
     render() {
         return(
-            <div className="mainCard" onClick={this.handleClick}>
+            <div className="mainCard" onClick={() => this.handleClick(this.props.car.id)}>
                 <Card className="carCard">
                     {this.props.reduxState.imageReducer.map((image, i) => {
                         if (this.props.car.id === image.vehicle_id) {

@@ -40,11 +40,23 @@ function* deleteVehicle(action) {
     }
 }
 
+function* fetchCarDetails(action) {
+    try{
+        console.log('In fetchCarDetails', action.payload.data);
+        let response = yield axios.get(`/api/vehicle/cardetail/${action.payload.id}`);
+        yield put({ type: 'SET_VEHICLE_DETAILS', payload: response.data})
+    }catch(error) {
+        console.log('Error in fetchCarDetails', error);
+        
+    }
+}
+
 function* vehicleSaga() {
     yield takeLatest('FETCH_VEHICLE', fetchVehicle);
     yield takeLatest('ADD_VEHICLE', addVehicle);
     yield takeLatest('FETCH_OWNER_VEHICLE', fetchOwnerVehicle);
     yield takeLatest('DELETE_VEHICLE', deleteVehicle);
+    yield takeLatest('FETCH_VEHICLE_DETAILS', fetchCarDetails);
 }
 
 export default vehicleSaga;
