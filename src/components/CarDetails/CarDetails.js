@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import '../CarDetails/CarDetails.css';
+import TheCar from '../TheCar/TheCar';
 
 class CarDetails extends Component {
 
@@ -13,7 +15,18 @@ class CarDetails extends Component {
         console.log('vehicle details:', this.props.reduxState.vehicleDetailsReducer);
         
         return(
-            <p>Details goes here</p>
+            <div>
+                {this.props.reduxState.vehicleDetailsReducer.map((car, i) => {
+                    return (
+                        <div key={i}>
+                            <div>
+                                <img key={i} className="imageDetails" src={car.image_url} />
+                            </div>
+                            <TheCar key={i} car={car} />
+                        </div>
+                    )
+                })}
+            </div>
         )
     }
 }
