@@ -10,8 +10,8 @@ class StartDate extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            startDate: new Date(),
-            endDate: new Date(),
+            start_date: new Date(),
+            end_date: new Date(),
         };
         this.handleStartChange = this.handleStartChange.bind(this);
         this.handleEndChange = this.handleEndChange.bind(this);
@@ -22,7 +22,7 @@ class StartDate extends React.Component {
         console.log('Start date picked',date);
         
         this.setState({
-            startDate: date
+            start_date: date
         });
     }
 
@@ -30,7 +30,7 @@ class StartDate extends React.Component {
         console.log('End date picked', date);
 
         this.setState({
-            endDate: date
+            end_date: date
         });
     }
 
@@ -39,13 +39,13 @@ class StartDate extends React.Component {
             <div>
                 <lable>Start Date</lable>
                 <DatePicker
-                    selected={this.state.startDate}
+                    selected={this.state.start_date}
                     onChange={this.handleStartChange}
                 />
                 <br/>
                 <label>End Date</label>
                 <DatePicker
-                    selected={this.state.startDate}
+                    selected={this.state.end_date}
                     onChange={this.handleEndChange}
                 />
                 <br/>
