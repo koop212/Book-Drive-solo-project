@@ -6,7 +6,7 @@ import Checkout from '../Checkout/Checkout';
 // CSS Modules, react-datepicker-cssmodules.css
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
-class StartDate extends React.Component {
+class StartEndDate extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -56,4 +56,4 @@ class StartDate extends React.Component {
     }
 }
 
-export default StartDate;
+export default StartEndDate;
