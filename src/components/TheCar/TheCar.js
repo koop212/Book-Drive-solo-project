@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../TheCar/TheCar.css';
 import StartEndDate from '../StartEndDate/StartEndDate';
-import { Grid, Paper} from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 
 
 
@@ -10,9 +10,9 @@ class TheCar extends Component {
         const carInfo = this.props.car;
         return(
             <div>
-                <Grid className="firstContainer" container direction="row">
+                <Grid className="firstContainer" container justify="flex-end" direction="row">
                     <Grid className="descriptions" item xs={8}>
-                        <h4>The Car <span className="carInfo">{carInfo.make} {carInfo.model} {carInfo.year}</span></h4>
+                        <h4>The Car <span className="carName">{carInfo.make} {carInfo.model} {carInfo.year}</span></h4>
                         <h4>Hosted By {carInfo.first_name}</h4>
                         <h4>Descripton {carInfo.description}</h4>
                     </Grid>
@@ -23,6 +23,7 @@ class TheCar extends Component {
                     <Grid className="dates" container justify="flex-end">
                         <StartEndDate carId={this.props.carId} />
                     </Grid>
+                
                 
                 {/* <div className="container">
                     <div className="description">

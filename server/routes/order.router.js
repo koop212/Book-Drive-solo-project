@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
 
 
 router.get('/', (req, res) => {
-    let queryText = `SELECT "order".*, vehicle.make, vehicle.model, vehicle.status FROM "order"
+    let queryText = `SELECT "order".*, vehicle.make, vehicle.model FROM "order"
                     JOIN vehicle ON "order".vehicle_id = vehicle.id
                     JOIN "user" ON "order".user_id = "user".id
                     WHERE "order".user_id = $1;`;

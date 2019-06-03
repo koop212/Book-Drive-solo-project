@@ -5,6 +5,7 @@ import userSaga from './userSaga';
 import vehicleSaga from './vehicleSaga';
 import imageSaga from './imageSaga';
 import orderSaga from './orderSaga';
+import requestSaga from './requestSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -21,5 +22,6 @@ export default function* rootSaga() {
     vehicleSaga(),
     imageSaga(),
     orderSaga(),
+    requestSaga(),
   ]);
 }
