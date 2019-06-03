@@ -1,5 +1,21 @@
 .price {
     font-size: 40px;
     float: right;
-    
+     
+}
+
+.perDay {
+    font-size: 20px;
+}
+
+.firstContainer {
+    flex-wrap: wrap;
+}
+
+.description {
+    margin-left: 60px;
+}
+
+.dates {
+   
 }

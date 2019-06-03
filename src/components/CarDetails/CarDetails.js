@@ -20,9 +20,9 @@ class CarDetails extends Component {
                     return (
                         <div key={i}>
                             <div>
-                                <img key={i} className="imageDetails" src={car.image_url} />
+                                <img key={i} className="imageDetails" src={car.image_url} alt={car.model} />
                             </div>
-                            <TheCar key={i} car={car} />
+                            <TheCar key={i} car={car} carId={this.props.match.params.id}/>
                         </div>
                     )
                 })}

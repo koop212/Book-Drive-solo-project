@@ -37,7 +37,7 @@ class StartEndDate extends React.Component {
     render() {
         return (
             <div>
-                <lable>Start Date</lable>
+                <label>Start Date</label>
                 <DatePicker
                     selected={this.state.start_date}
                     onChange={this.handleStartChange}
@@ -49,7 +49,7 @@ class StartEndDate extends React.Component {
                     onChange={this.handleEndChange}
                 />
                 <br/>
-                <Checkout dates={this.state}/>
+                <Checkout startDate={this.state.start_date} endDate={this.state.end_date} carId={this.props.carId} />
             </div>
             
         );

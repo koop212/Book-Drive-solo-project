@@ -5,6 +5,7 @@ import VehicleReview from '../VehicleReview/VehicleReview';
 import UserReview from '../UserReview/UserReview';
 
 
+
 class ActivityPage extends Component {
 
     componentDidMount(){
