@@ -17,5 +17,14 @@
 }
 
 .dates {
-   
+   padding-right:200px;
+}
+
+.descriptions {
+    align-items: flex-end;
+}
+
+.carInfo {
+    font-size: 30px;
+    padding-left: 20px;
 }

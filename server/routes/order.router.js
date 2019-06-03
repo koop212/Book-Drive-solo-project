@@ -23,6 +23,22 @@ router.post('/', (req, res) => {
 })
 
 
+router.get('/', (req, res) => {
+    let queryText = `SELECT "order".*, vehicle.make, vehicle.model, vehicle.status FROM "order"
+                    JOIN vehicle ON "order".vehicle_id = vehicle.id
+                    JOIN "user" ON "order".user_id = "user".id
+                    WHERE "order".user_id = $1;`;
+    pool.query(queryText, [req.user.id])
+        .then((results) => {
+            console.log('results.row:', results.rows);
+            res.send(results.rows)
+        }).catch(error => {
+            console.log('error in owner car GET:', error);
+            res.sendStatus(500);
+        });
+});
+
+
 
 
 module.exports = router;

@@ -10,14 +10,14 @@ class TheCar extends Component {
         const carInfo = this.props.car;
         return(
             <div>
-                <Grid className="firstContainer" container direction="row" justify="space-around">
-                    <Grid item sm={6}>
-                        <h4>The Car {carInfo.make} {carInfo.model} {carInfo.year}</h4>
+                <Grid className="firstContainer" container direction="row">
+                    <Grid className="descriptions" item xs={8}>
+                        <h4>The Car <span className="carInfo">{carInfo.make} {carInfo.model} {carInfo.year}</span></h4>
                         <h4>Hosted By {carInfo.first_name}</h4>
                         <h4>Descripton {carInfo.description}</h4>
                     </Grid>
-                    <Grid item className="price" justify="flex-end" sm={6}>
-                        <p>${carInfo.price}<span className="perDay">/Day</span></p>
+                    <Grid item xs={4}>
+                        <p className="price">${carInfo.price}<span className="perDay">/Day</span></p>
                     </Grid>
                 </Grid> 
                     <Grid className="dates" container justify="flex-end">
