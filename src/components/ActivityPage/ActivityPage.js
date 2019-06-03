@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../ActivityPage/Activity.css';
-import VehicleReview from '../VehicleReview/VehicleReview';
+// import VehicleReview from '../VehicleReview/VehicleReview';
 import MyOrder from '../MyOrder/MyOrder';
+import CarRequested from '../CarRequested/CarRequested';
 
 
 class ActivityPage extends Component {
@@ -26,14 +27,16 @@ class ActivityPage extends Component {
                 {/* <pre>{JSON.stringify(this.props.reduxState.vehicleOwnerReducer)}</pre> */}
                 <h2 className="notification">Notifications</h2>
                 <div>
-                    <VehicleReview />
+                    {/* <VehicleReview /> */}
                 </div>
                 <div>
                     <MyOrder />
+                    <CarRequested />
                 </div>
+                <h2>Your Vehicle Listed</h2>
                 <ul>
                     {this.props.reduxState.vehicleOwnerReducer.map((car, i) => {
-                        return (<li key={i}>{car.make} {car.model} <button onClick={() => this.deleteVehicle(car.id)}>Remove</button></li>)
+                        return (<li key={i}>{car.make} {car.model} <button className="deleteBtn" onClick={() => this.deleteVehicle(car.id)}>Remove</button></li>)
                     })}
                 </ul>
             </div>

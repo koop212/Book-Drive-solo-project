@@ -12,20 +12,21 @@ class MyOrder extends Component {
     render() {
         return (
             <div>
+                <h2>Vehicles you booked</h2>
                 {this.props.reduxState.myOrderReducer.map(order => {
                     return (
                         <div key={order.id}>
                             <p>
                                 Your request for {order.make} {order.model} on <br />
-                                Starting date <Moment format='MM/DD/YYYY'>{order.start_date}</Moment> to Ending date <Moment format='MM/DD/YYYY'>{order.end_date}</Moment>
+                                <Moment format='MM/DD/YYYY'>{order.start_date}</Moment> to <Moment format='MM/DD/YYYY'>{order.end_date}</Moment>
                                 <br />
                                 is {order.status}
                             </p>
                         </div>
-
                     )
                 })}
             </div>
+            
         )
     }
 }
