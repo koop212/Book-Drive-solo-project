@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import LogOutButton from '../LogOutButton/LogOutButton';
 
 class AccountPage extends Component {
 
@@ -29,6 +29,9 @@ class AccountPage extends Component {
                 <label>Email</label>
                 <input placeholder="Update Email" onChange={this.handleChange} />
                 <button onClick={this.handleSubmit}>Update</button>
+                <div>
+                    <LogOutButton />
+                </div>
             </div>
         )
     }

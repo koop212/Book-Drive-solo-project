@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CarCard from '../CarCard/CarCard';
+import '../CarList/CarList.css';
 
 class CarList extends Component {
 
@@ -11,13 +12,11 @@ class CarList extends Component {
 
     render() {
         return(
-            <div>
-                <div>
-                    {this.props.reduxState.vehicleReducer.map((car, i) => {
-                        //Show list of all cars
-                        return <CarCard key={i} car={car}/>
-                    })}
-                </div>
+            <div className="carList">
+                {this.props.reduxState.vehicleReducer.map((car, i) => {
+                    //Show list of all cars
+                    return <CarCard key={i} car={car}/>
+                })}
             </div>
         )
     }

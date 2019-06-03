@@ -11,10 +11,18 @@ function* addOrder(action) {
     }
 }
 
-
+function* updateStatus(action) {
+    try{
+        console.log('In updateStatus Saga', action.payload)
+        yield axios.put(`/api/order/${action.payload.id}`, action.payload)
+    }catch(error) {
+        console.log('Error in updateStatus saga', error);   
+    }
+}
 
 function* orderSaga() {
     yield takeLatest('ADD_ORDER', addOrder);
+    yield takeLatest('UPDATE_STATUS', updateStatus);
 }
 
 
