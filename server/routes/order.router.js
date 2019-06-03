@@ -38,6 +38,20 @@ router.get('/', (req, res) => {
         });
 });
 
+router.get('/request', (req, res) => {
+    let queryText = `SELECT "order".*, vehicle.make, vehicle.model, "user".username FROM "order"
+                    JOIN "user" ON "order".user_id = "user".id
+                    JOIN vehicle ON "order".vehicle_id = vehicle.id
+                    WHERE "vehicle".user_id = $1;`;
+    pool.query(queryText, [req.user.id])
+        .then((results) => {
+            console.log('results.row:', results.rows);
+            res.send(results.rows)
+        }).catch(error => {
+            console.log('error in owner car GET:', error);
+            res.sendStatus(500);
+        });
+});
 
 
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../ActivityPage/Activity.css';
 import VehicleReview from '../VehicleReview/VehicleReview';
-import CarRequested from '../CarRequested/CarRequested';
+import MyOrder from '../MyOrder/MyOrder';
 
 
 class ActivityPage extends Component {
@@ -29,7 +29,7 @@ class ActivityPage extends Component {
                     <VehicleReview />
                 </div>
                 <div>
-                    <CarRequested />
+                    <MyOrder />
                 </div>
                 <ul>
                     {this.props.reduxState.vehicleOwnerReducer.map((car, i) => {
