@@ -19,7 +19,7 @@ class Checkout extends Component {
     render() {
         console.log('dates showing from checkout component', this.props.startDate, this.props.endDate);
         return(
-            <button onClick={this.handleSubmit}>Checkout</button>
+            <button className="checkoutButton" onClick={this.handleSubmit}>Checkout</button>
         )
     }
 }

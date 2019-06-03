@@ -2,6 +2,7 @@ import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Checkout from '../Checkout/Checkout';
+import '../StartEndDate/StartEndDate.css';
 
 // CSS Modules, react-datepicker-cssmodules.css
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
@@ -36,20 +37,24 @@ class StartEndDate extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="datePicker">
                 <label>Start Date</label>
+                <br/>
                 <DatePicker
                     selected={this.state.start_date}
                     onChange={this.handleStartChange}
                 />
                 <br/>
                 <label>End Date</label>
+                <br/>
                 <DatePicker
                     selected={this.state.end_date}
                     onChange={this.handleEndChange}
                 />
                 <br/>
-                <Checkout startDate={this.state.start_date} endDate={this.state.end_date} carId={this.props.carId} />
+                <div className="checkoutBtn">
+                    <Checkout startDate={this.state.start_date} endDate={this.state.end_date} carId={this.props.carId} />
+                </div>
             </div>
             
         );

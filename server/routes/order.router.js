@@ -53,6 +53,20 @@ router.get('/request', (req, res) => {
         });
 });
 
+router.put('/:id', (req, res) => {
+    console.log('In update order status', req.body.status);
+    console.log('id in update order status',req.params.id);
+
+    let queryText = `UPDATE "order" SET "status" = $1 WHERE "order"."id" = $2;`;
+    pool.query(queryText, [req.body.status, req.params.id])
+    .then(result => {
+        console.log(result);
+        res.sendStatus(200);
+    }).catch(error => {
+        console.log('Error in update order status', error);
+        res.sendStatus(500);
+    })
+})
 
 
 module.exports = router;
