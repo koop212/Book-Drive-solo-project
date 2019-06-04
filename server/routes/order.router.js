@@ -42,7 +42,8 @@ router.get('/request', (req, res) => {
     let queryText = `SELECT "order".*, vehicle.make, vehicle.model, "user".username, vehicle.price FROM "order"
                     JOIN "user" ON "order".user_id = "user".id
                     JOIN vehicle ON "order".vehicle_id = vehicle.id
-                    WHERE "vehicle".user_id = $1;`;
+                    WHERE "vehicle".user_id = $1
+                    ORDER BY "order"."start_date";`;
     pool.query(queryText, [req.user.id])
         .then((results) => {
             console.log('results.row:', results.rows);

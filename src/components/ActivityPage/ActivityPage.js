@@ -4,6 +4,8 @@ import '../ActivityPage/Activity.css';
 // import VehicleReview from '../VehicleReview/VehicleReview';
 import MyOrder from '../MyOrder/MyOrder';
 import CarRequested from '../CarRequested/CarRequested';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 
 
 class ActivityPage extends Component {
@@ -15,8 +17,25 @@ class ActivityPage extends Component {
 
     // Delete vehicle belonging to logged in user
     deleteVehicle = (carId) => {
+        Swal.fire({
+            title: 'Are you sure you want to delete this car?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                this.props.dispatch({ type: 'DELETE_VEHICLE', payload: { id: carId } });
+                Swal.fire(
+                    'Deleted!',
+                    'Your car has been deleted.',
+                    'success'
+                )
+            }
+        })
         console.log('deleteVehicle function', carId);
-        this.props.dispatch({type: 'DELETE_VEHICLE', payload: {id:carId}});
     }
 
     render() {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import '../CarCard/CarCard.css';
-import { Card } from '@material-ui/core';
+import { Card, Paper, Typography } from '@material-ui/core';
 
 
 class CarCard extends Component {
@@ -17,14 +17,20 @@ class CarCard extends Component {
         return(
             <div className="mainCard" onClick={() => this.handleClick(this.props.car.id)}>
                 <Card className="carCard">
-                    {this.props.reduxState.imageReducer.map((image, i) => {
-                        if (this.props.car.id === image.vehicle_id) {
-                            return <img key={i} className="carImg" src={image.image_url} alt={this.props.car.model}/>
-                        }
-                        return null;
-                    })}
+                    <Paper>
+                        {this.props.reduxState.imageReducer.map((image, i) => {
+                            if (this.props.car.id === image.vehicle_id) {
+                                return <img key={i} className="carImg" src={image.image_url} alt={this.props.car.model}/>
+                            }
+                            return null;
+                        })}
+                    </Paper>
                 </Card>
-                <p className="carInfo">{this.props.car.year} {this.props.car.make} {this.props.car.model} ${this.props.car.price}/Day</p>
+                <Typography paragraph>
+                    <div>
+                        <p className="carInfo">{this.props.car.year} {this.props.car.make} {this.props.car.model} ${this.props.car.price}/Day</p>
+                    </div>
+                </Typography>
             </div>
         )
     }

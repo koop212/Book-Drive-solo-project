@@ -1,5 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import '../VehicleForm/VehicleForm.css';
+import { TextField, Button, Grid } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles'
+
+
+
+const styles = {
+    root: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        width: '500px'
+    },
+    addButton: {
+        margin: '10px'
+    }
+}
+
 
 class VehicleForm extends Component {
 
@@ -34,12 +51,13 @@ class VehicleForm extends Component {
             this.props.dispatch({type: 'ADD_VEHICLE', payload: this.state});
         }
     }
+    
 
     render() {
         return(
             <div>
-                <h2>Tell me about your car</h2>
-                <form>
+                <h2 className="formHeader">Tell me about your car</h2>
+                {/* <form>
                     <input onChange={this.handleChangeFor('year')} placeholder="Year" />
                     <input onChange={this.handleChangeFor('make')} placeholder="Make" />
                     <input onChange={this.handleChangeFor('model')} placeholder="Model" />
@@ -50,10 +68,89 @@ class VehicleForm extends Component {
                     <input onChange={this.handleChangeFor('zip')} placeholder="Zip" />
                     <input onChange={this.handleChangeFor('image_url')} placeholder="Add image url" />
                     <button onClick={this.handleSubmit}>Add Vehicle</button>
+                </form> */}
+                <Grid container justify="center">
+                <form className={this.props.classes.root} noValidate autoComplete="on">
+                    <TextField
+                        id="outlined-name"
+                        label="Year"
+                        fullWidth
+                        onChange={this.handleChangeFor('year')}
+                        margin="dense"
+                        variant="outlined"
+                    />
+                    <TextField
+                        id="outlined-name"
+                        label="Make"
+                        fullWidth
+                        onChange={this.handleChangeFor('make')}
+                        margin="dense"
+                        variant="outlined"
+                    />
+                    <TextField
+                        id="outlined-name"
+                        label="Model"
+                        fullWidth
+                        onChange={this.handleChangeFor('model')}
+                        margin="dense"
+                        variant="outlined"
+                    />
+                    <TextField
+                        id="outlined-name"
+                        label="Description"
+                        fullWidth
+                        onChange={this.handleChangeFor('description')}
+                        margin="dense"
+                        variant="outlined"
+                    />
+                    <TextField
+                        id="outlined-name"
+                        label="Price per day"
+                        fullWidth
+                        onChange={this.handleChangeFor('price')}
+                        margin="dense"
+                        variant="outlined"
+                    />
+                    <TextField
+                        id="outlined-name"
+                        label="City"
+                        fullWidth
+                        onChange={this.handleChangeFor('city')}
+                        margin="dense"
+                        variant="outlined"
+                    />
+                    <TextField
+                        id="outlined-name"
+                        label="State"
+                        fullWidth
+                        onChange={this.handleChangeFor('state')}
+                        margin="dense"
+                        variant="outlined"
+                    />
+                    <TextField
+                        id="outlined-name"
+                        label="Zip Code"
+                        fullWidth
+                        onChange={this.handleChangeFor('zip')}
+                        margin="dense"
+                        variant="outlined"
+                    />
+                    <TextField
+                        id="outlined-name"
+                        label="Add a photo"
+                        fullWidth
+                        onChange={this.handleChangeFor('image_url')}
+                        margin="dense"
+                        variant="outlined"
+                    />
                 </form>
+                </Grid>
+                <Grid container justify="space-around">
+                    <Button className={this.props.classes.addButton} onClick={this.handleSubmit} variant="contained" color="primary">Add Vehicle</Button>
+                </Grid>
             </div>
         )
     }
 }
 
-export default connect()(VehicleForm);
+export default withStyles(styles)(connect()(VehicleForm));

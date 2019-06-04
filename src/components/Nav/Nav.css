@@ -27,7 +27,8 @@
 }
 
 .nav-link:hover {
-  background-color: #008183;
+  /* background-color: #008183; */
+  text-decoration: underline;
 }
 
 .nav-right {

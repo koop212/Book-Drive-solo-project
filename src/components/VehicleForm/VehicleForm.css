@@ -1,0 +1,12 @@
+.formHeader {
+    text-align: center;
+}
+
+.carForm {
+    width: 800px;
+    direction: column;
+}
+
+.addButton {
+    margin: 20px;
+}
