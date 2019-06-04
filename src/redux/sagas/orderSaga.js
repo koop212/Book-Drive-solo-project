@@ -1,4 +1,4 @@
-import { takeLatest } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 
@@ -15,6 +15,7 @@ function* updateStatus(action) {
     try{
         console.log('In updateStatus Saga', action.payload)
         yield axios.put(`/api/order/${action.payload.id}`, action.payload)
+        yield put({type:'FETCH_REQUESTED_CAR'})
     }catch(error) {
         console.log('Error in updateStatus saga', error);   
     }

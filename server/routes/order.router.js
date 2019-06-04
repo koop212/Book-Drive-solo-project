@@ -69,5 +69,23 @@ router.put('/:id', (req, res) => {
     })
 })
 
+router.post('/rate', (req, res) => {
+    if (req.isAuthenticated()) {
+        let rate = req.body;
+        console.log('vehicle id from rate post route', rate.vehicle_id);
+
+        let queryText = `INSERT INTO "rating" ("rates", "comment", "user_id", "vehicle_id")
+                        VALUES ($1, $2, $3, $4);`;
+        pool.query(queryText, [rate.rates, rate.comment, req.user.id, rate.vehicle_id])
+            .then(result => {
+                res.sendStatus(201)
+            }).catch(error => {
+                console.log('Error in POST rate route', error);
+                res.sendStatus(500);
+            })
+    } else {
+        res.sendStatus(403);
+    }
+})
 
 module.exports = router;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
-import VehicleReview from '../VehicleReview/VehicleReview';
+import VehicleReview from '../VehicleReview/VehicleReview.jsx';
 
 
 class MyOrder extends Component {
