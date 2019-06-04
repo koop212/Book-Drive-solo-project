@@ -11,6 +11,15 @@ function* addOrder(action) {
     }
 }
 
+function* addRates(action) {
+    try {
+        console.log('In addOrderSaga', action.payload);
+        yield axios.post('/api/order/rate', action.payload);
+    } catch (error) {
+        console.log('Error in addOrder', error);
+    }
+}
+
 function* updateStatus(action) {
     try{
         console.log('In updateStatus Saga', action.payload)
@@ -24,6 +33,7 @@ function* updateStatus(action) {
 function* orderSaga() {
     yield takeLatest('ADD_ORDER', addOrder);
     yield takeLatest('UPDATE_STATUS', updateStatus);
+    yield takeLatest('ADD_RATES', addRates);
 }
 
 

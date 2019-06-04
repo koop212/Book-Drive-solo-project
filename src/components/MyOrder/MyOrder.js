@@ -22,7 +22,7 @@ class MyOrder extends Component {
                                 <br />
                                 is {order.status}
                                 <br/>
-                                <VehicleReview />
+                                <VehicleReview carRate={order.vehicle_id} />
                         </div>
                     )
                 })}
