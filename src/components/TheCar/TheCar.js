@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import '../TheCar/TheCar.css';
 import StartEndDate from '../StartEndDate/StartEndDate';
-import { Grid } from '@material-ui/core';
+import { Grid, Paper } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import DisplayRating from '../DisplayRating/DisplayRating';
+import DisplayComments from '../DisplayComments/DisplayComments';
 
 const styles = {
     root: {
         justifyContent: 'center', 
-        // direction: 'column',
-        flexDirection: 'row',
-        // alignItems: 'center',
+        // flexDirection: 'row',
         display: 'flex',
     },
     price: {
@@ -26,9 +26,17 @@ const styles = {
     },
     description: {
         paddingLeft: '200px',
+        paddingTop: '30px',
     },
     date: {
-        fontSize: '20px;'
+        fontSize: '20px',
+    },
+    rating: {
+        paddingBottom: '20px',
+    },
+    comment: {
+        alignItems: 'center',
+        justifyContent: 'center',
     }
     
 }
@@ -39,36 +47,28 @@ class TheCar extends Component {
         const carInfo = this.props.car;
         const style = this.props.classes;
         return(
-            <div className={style.root}>
-                <Grid container sm={12}>
-                    <Grid className={style.description} item sm={6}>
-                        <h4>The Car: <br/><span className={style.carInfo}>{carInfo.make} {carInfo.model} {carInfo.year}</span></h4>
-                        <h4>Hosted By: <br/>{carInfo.first_name}</h4>
-                        <h4>Descripton: <br/>{carInfo.description}</h4>
-                    </Grid>
-                    <Grid item sm={6} className={style.price}>
-                        <p>${carInfo.price}<span className={style.day}>/Day</span></p>
-                        <div className={style.date}>
-                            <StartEndDate carId={this.props.carId} />
-                        </div>
-                    </Grid>
-                </Grid> 
-                    
-                
-                
-                {/* <div className="container">
-                    <div className="description">
-                        <h4>The Car {carInfo.make} {carInfo.model} {carInfo.year}</h4>
-                        <h4>Hosted By {carInfo.first_name}</h4>
-                        <h4>Descripton {carInfo.description}</h4>
-                    </div>
-                    <div className="price">
-                        <p>${carInfo.price}<span className="perDay">/Day</span></p>
-                    </div>
+            <div>
+                <div className={style.root}>
+                    <Grid container sm={12}>
+                        <Grid className={style.description} item sm={6}>
+                            <h3 className={style.rating}><DisplayRating /></h3>
+                            <h4>The Car: <br/><span className={style.carInfo}>{carInfo.make} {carInfo.model} {carInfo.year}</span></h4>
+                            <h4>Hosted By: <br/>{carInfo.first_name}</h4>
+                            <h4>Descripton: <br/>{carInfo.description}</h4>
+                        </Grid>
+                        <Grid item sm={6} className={style.price}>
+                            <p>${carInfo.price}<span className={style.day}>/Day</span></p>
+                            <div className={style.date}>
+                                <StartEndDate carId={this.props.carId} />
+                            </div>
+                        </Grid>
+                    </Grid> 
                 </div>
-                    <div className="date">
-                        <StartEndDate />
-                </div>*/}
+                <Grid container className={style.comment}>
+                    <Paper>
+                        <DisplayComments />
+                    </Paper>
+                </Grid>
             </div>
         )
     }
