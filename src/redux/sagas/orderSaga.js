@@ -14,7 +14,7 @@ function* addOrder(action) {
 function* addRates(action) {
     try {
         console.log('In addOrderSaga', action.payload);
-        yield axios.post('/api/order/rate', action.payload);
+        yield axios.post('/api/rate', action.payload);
     } catch (error) {
         console.log('Error in addOrder', error);
     }

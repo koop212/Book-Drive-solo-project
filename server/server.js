@@ -13,6 +13,7 @@ const userRouter = require('./routes/user.router');
 const vehicleRouter = require('./routes/vehicle.router');
 const imageRouter = require('./routes/image.router');
 const orderRouter = require('./routes/order.router');
+const rateRouter = require('./routes/rate.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -30,6 +31,7 @@ app.use('/api/user', userRouter);
 app.use('/api/vehicle', vehicleRouter);
 app.use('/api/image', imageRouter);
 app.use('/api/order', orderRouter);
+app.use('/api/rate', rateRouter);
 
 // Serve static files
 app.use(express.static('build'));

@@ -29,6 +29,7 @@ class VehicleReview extends Component {
     render() {
         return(
             <div>
+                <h5>Comment and Rate this vehicle</h5>
                 <div>
                     <Rating
                         emptySymbol= {<StarBorder />}
@@ -38,16 +39,19 @@ class VehicleReview extends Component {
                         stop={5}
                         onChange={this.handleOnChange}
                     />
-                    <AddRate rate={this.state.rates} comment={this.state.comment} carRating={this.props.carRate}/>
+                    
                 </div>
                 <div>
                     <TextField
-                        label="Leave a comment"
+                        label="How was the ride?"
                         multiline
                         rowsMax="4"
                         onChange={this.handleCommentChange}
                         margin="normal"
                     />
+                </div>
+                <div>
+                    <AddRate rate={this.state.rates} comment={this.state.comment} carRating={this.props.carRate} />
                 </div>
             </div>
         )

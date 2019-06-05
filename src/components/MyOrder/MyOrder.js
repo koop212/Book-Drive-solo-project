@@ -15,16 +15,37 @@ class MyOrder extends Component {
             <div>
                 <h2>Vehicles you booked</h2>
                 {this.props.reduxState.myOrderReducer.map(order => {
-                    return (
-                        <div key={order.id}>
+                    if(order.status === 'Declined') {
+                        return (
+                            <div key={order.id}>
+                                Your request for {order.make} {order.model} on <br />
+                                <Moment format='MM/DD/YYYY'>{order.start_date}</Moment> to <Moment format='MM/DD/YYYY'>{order.end_date}</Moment>
+                                <br />
+                                is Declined
+                            </div>
+                        )
+                    } else if(order.status === 'Approved' || order.status === 'Pending') {
+                        return(
+                            <div key={order.id}>
                                 Your request for {order.make} {order.model} on <br />
                                 <Moment format='MM/DD/YYYY'>{order.start_date}</Moment> to <Moment format='MM/DD/YYYY'>{order.end_date}</Moment>
                                 <br />
                                 is {order.status}
-                                <br/>
+                                <br />
                                 <VehicleReview carRate={order.vehicle_id} />
-                        </div>
-                    )
+                            </div>
+                        )
+                    }
+                    // return (
+                    //     <div key={order.id}>
+                    //             Your request for {order.make} {order.model} on <br />
+                    //             <Moment format='MM/DD/YYYY'>{order.start_date}</Moment> to <Moment format='MM/DD/YYYY'>{order.end_date}</Moment>
+                    //             <br />
+                    //             is {order.status}
+                    //             <br/>
+                    //             <VehicleReview carRate={order.vehicle_id} />
+                    //     </div>
+                    // )
                 })}
             </div>
             
