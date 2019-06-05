@@ -11,8 +11,19 @@ function* fetchComments() {
     }
 }
 
+function* fetchRates() {
+    try{
+        let response = yield axios.get('/api/rate');
+        console.log('In fetchRates',response);
+        yield put({type: 'SET_RATES', payload: response.data});
+    }catch(error) {
+        console.log('Error in fetchRates', error)
+    }
+}
+
 function* commentSaga() {
     yield takeLatest('FETCH_COMMENTS', fetchComments);
+    yield takeLatest('FETCH_RATES', fetchRates);
 }
 
 export default commentSaga

@@ -9,6 +9,7 @@ import vehicleDetailsReducer from './vehicleDetailsReducer';
 import myOrderReducer from './myOrderReducer';
 import requestedCarReducer from './requestedCarReducer';
 import commentReducer from './commentReducer';
+import ratesReducer from './ratesReducer';
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
 // This is imported in index.js as rootSaga
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   myOrderReducer,
   requestedCarReducer,
   commentReducer,
+  ratesReducer,
 });
 
 export default rootReducer;

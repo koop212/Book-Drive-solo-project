@@ -58,7 +58,7 @@ class TheCar extends Component {
                 <div className={style.root}>
                     <Grid container sm={12}>
                         <Grid className={style.description} item sm={6}>
-                            <h3 className={style.rating}><DisplayRating /></h3>
+                            <h3 className={style.rating}><DisplayRating carId={this.props.carId} /></h3>
                             <h4>The Car: <br/><span className={style.carInfo}>{carInfo.make} {carInfo.model} {carInfo.year}</span></h4>
                             <h4>Hosted By: <br/>{carInfo.first_name}</h4>
                             <h4>Descripton: <br/>{carInfo.description}</h4>
