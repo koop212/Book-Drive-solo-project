@@ -75,10 +75,11 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 
 router.get('/cardetails/:id', (req, res) => {
     console.log('In get route for vehicle details', req.params.id);
-    let queryText = `SELECT vehicle.*, image.image_url, "user".first_name FROM vehicle
+    let queryText = `SELECT vehicle.*, ARRAY_AGG(image.image_url) AS images, "user".first_name FROM vehicle
                     JOIN image ON image.vehicle_id = vehicle.id
                     JOIN "user" ON vehicle.user_id = "user".id
-                    WHERE vehicle.id = $1;`;
+                    WHERE vehicle.id = $1
+                    GROUP BY vehicle.id, "user".first_name;`;
     pool.query(queryText, [req.params.id])
     .then(result => {
         console.log('result from GET vehicle details', result.rows);

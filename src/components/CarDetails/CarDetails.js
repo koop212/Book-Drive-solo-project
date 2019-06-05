@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../CarDetails/CarDetails.css';
 import TheCar from '../TheCar/TheCar';
+import ImageStepper from '../ImageStepper/ImageStepper';
 
 class CarDetails extends Component {
 
@@ -19,8 +20,10 @@ class CarDetails extends Component {
                 {this.props.reduxState.vehicleDetailsReducer.map((car, i) => {
                     return (
                         <div key={i}>
+                            {console.log('in Cardetails', car.images)}
                             <div>
-                                <img key={i} className="imageDetails" src={car.image_url} alt={car.model} />
+                                {/* <img key={i} className="imageDetails" src={car.image_url} alt={car.model} /> */}
+                                <ImageStepper carPic={car.images} car={car}/>
                             </div>
                             <TheCar key={i} car={car} carId={this.props.match.params.id}/>
                         </div>
