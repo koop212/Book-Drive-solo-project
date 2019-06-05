@@ -18,7 +18,8 @@ router.get('/', (req, res) => {
 
 // Get comments for vehicle
 router.get('/comments', (req, res) => {
-    let queryText = `SELECT * FROM image;`;
+    let queryText = `SELECT rating."comment", "user".first_name, rating.vehicle_id FROM rating
+                    JOIN "user" ON "user".id = rating.user_id;`;
     pool.query(queryText)
         .then(result => {
             res.send(result.rows);

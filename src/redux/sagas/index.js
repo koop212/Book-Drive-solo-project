@@ -6,7 +6,7 @@ import vehicleSaga from './vehicleSaga';
 import imageSaga from './imageSaga';
 import orderSaga from './orderSaga';
 import requestSaga from './requestSaga';
-
+import commentSaga from './commentSaga';
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga
@@ -23,5 +23,6 @@ export default function* rootSaga() {
     imageSaga(),
     orderSaga(),
     requestSaga(),
+    commentSaga(),
   ]);
 }

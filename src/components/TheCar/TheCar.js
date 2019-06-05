@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../TheCar/TheCar.css';
 import StartEndDate from '../StartEndDate/StartEndDate';
-import { Grid, Paper } from '@material-ui/core';
+import { Grid, Paper, GridList } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import DisplayRating from '../DisplayRating/DisplayRating';
 import DisplayComments from '../DisplayComments/DisplayComments';
@@ -37,6 +37,13 @@ const styles = {
     comment: {
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    paper: {
+        width: '600px',
+        paddingLeft: '80px'
+    },
+    commentHeader: {
+        justifyContent: 'center',
     }
     
 }
@@ -64,9 +71,13 @@ class TheCar extends Component {
                         </Grid>
                     </Grid> 
                 </div>
+                
+                <Grid container className={style.commentHeader}>
+                    <h2>Comments</h2>
+                </Grid>
                 <Grid container className={style.comment}>
-                    <Paper>
-                        <DisplayComments />
+                    <Paper className={style.paper}>
+                        <DisplayComments carId={this.props.carId} />
                     </Paper>
                 </Grid>
             </div>
