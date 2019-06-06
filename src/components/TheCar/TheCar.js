@@ -5,6 +5,7 @@ import { Grid, Paper, GridList } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import DisplayRating from '../DisplayRating/DisplayRating';
 import DisplayComments from '../DisplayComments/DisplayComments';
+import FeatureDisplay from '../FeatureDisplay/FeatureDisplay';
 
 const styles = {
     root: {
@@ -26,7 +27,7 @@ const styles = {
     },
     description: {
         paddingLeft: '200px',
-        paddingTop: '30px',
+        // paddingTop: '10px',
     },
     date: {
         fontSize: '20px',
@@ -62,6 +63,7 @@ class TheCar extends Component {
                             <h4>The Car: <br/><span className={style.carInfo}>{carInfo.make} {carInfo.model} {carInfo.year}</span></h4>
                             <h4>Hosted By: <br/>{carInfo.first_name}</h4>
                             <h4>Descripton: <br/>{carInfo.description}</h4>
+                            <FeatureDisplay carId={this.props.carId}/>
                         </Grid>
                         <Grid item sm={6} className={style.price}>
                             <p>${carInfo.price}<span className={style.day}>/Day</span></p>

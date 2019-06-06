@@ -29,6 +29,17 @@ router.get('/comments', (req, res) => {
         });
 });
 
+router.get('/features', (req, res) => {
+    let queryText = `SELECT * FROM features;`;
+    pool.query(queryText)
+        .then(result => {
+            res.send(result.rows);
+        }).catch(error => {
+            console.log('Error in feature get route', error);
+            res.sendStatus(500);
+        });
+});
+
 router.post('/', (req, res) => {
     if (req.isAuthenticated()) {
         let rate = req.body;

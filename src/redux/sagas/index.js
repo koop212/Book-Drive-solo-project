@@ -7,6 +7,7 @@ import imageSaga from './imageSaga';
 import orderSaga from './orderSaga';
 import requestSaga from './requestSaga';
 import commentSaga from './commentSaga';
+import featureSaga from './featuresSaga';
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga
@@ -24,5 +25,6 @@ export default function* rootSaga() {
     orderSaga(),
     requestSaga(),
     commentSaga(),
+    featureSaga(),
   ]);
 }
