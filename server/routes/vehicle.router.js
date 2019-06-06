@@ -27,10 +27,24 @@ router.post('/', (req, res) => {
         .then((result) => {
             console.log('Vehicle id:',result.rows[0].id);
             let query = `INSERT INTO image ("image_url", "vehicle_id")
-                        VALUES ($1, $2);`;
+                        VALUES ($1, $2)
+                        RETURNING "vehicle_id";`;
             pool.query(query, [req.body.image_url, result.rows[0].id])
-            .then(result => {
-                res.sendStatus(201)
+            .then(result => { 
+                console.log('Vehicle from image table', result.rows[0].vehicle_id);
+                let feature = req.body;
+                let query = `INSERT INTO features ("all_wheel_drive", "pet_friendly", "heated_seats", 
+                            "convertible", "sunroof", "automatic", "manual", "electric", "gas", "hybrid", "vehicle_id")
+                            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);`;
+                pool.query(query, [feature.all_wheel_drive, feature.pet_friendly, feature.heated_seats, 
+                                feature.convertible, feature.sunroof, feature.automatic, feature.manual, 
+                                feature.electric, feature.gas, feature.hybrid, result.rows[0].vehicle_id])
+                .then(result => {
+                    res.sendStatus(201)
+                }).catch(error => {
+                    console.log('Error in post features', error)
+                    res.sendStatus(500)
+                })
             }).catch(error => {
                 console.log('Error in post image', error);
                 res.sendStatus(500);

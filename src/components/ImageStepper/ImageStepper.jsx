@@ -8,36 +8,6 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import { connect } from 'react-redux';
 
-// const tutorialSteps = [
-//     // {
-//     //     imagePath: this.props.carPic
-//     // }
-//     {
-//         label: 'San Francisco – Oakland Bay Bridge, United States',
-//         imgPath:
-//             'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
-//     },
-//     {
-//         label: 'Bird',
-//         imgPath:
-//             'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
-//     },
-//     {
-//         label: 'Bali, Indonesia',
-//         imgPath:
-//             'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250&q=80',
-//     },
-//     {
-//         label: 'NeONBRAND Digital Marketing, Las Vegas, United States',
-//         imgPath:
-//             'https://images.unsplash.com/photo-1518732714860-b62714ce0c59?auto=format&fit=crop&w=400&h=250&q=60',
-//     },
-//     {
-//         label: 'Goč, Serbia',
-//         imgPath:
-//             'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
-//     },
-// ];
 
 const styles = theme => ({
     root: {
@@ -58,6 +28,8 @@ const styles = theme => ({
         display: 'block',
         width: '100%',
         objectFit: 'cover',
+        transition: 'all 2s ease-in-out',
+
     },
 });
 
@@ -115,7 +87,7 @@ class ImageStepper extends Component {
                     variant="text"
                     activeStep={this.state.activeStep}
                     nextButton={
-                        <Button size="small" onClick={this.handleNext} disabled={this.state.activeStep === this.state.activeStep - 1}>
+                        <Button size="small" onClick={this.handleNext} >
                             Next
                 {this.props.theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
                         </Button>

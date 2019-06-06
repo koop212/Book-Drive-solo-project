@@ -13,7 +13,7 @@ function* addOrder(action) {
 
 function* addRates(action) {
     try {
-        console.log('In addOrderSaga', action.payload);
+        console.log('In addRatesSaga', action.payload);
         yield axios.post('/api/rate', action.payload);
     } catch (error) {
         console.log('Error in addOrder', error);
@@ -24,7 +24,8 @@ function* updateStatus(action) {
     try{
         console.log('In updateStatus Saga', action.payload)
         yield axios.put(`/api/order/${action.payload.id}`, action.payload)
-        yield put({type:'FETCH_REQUESTED_CAR'})
+        yield put({type:'FETCH_REQUESTED_CAR'});
+        yield put({ type: 'FETCH_MY_ORDER'});
     }catch(error) {
         console.log('Error in updateStatus saga', error);   
     }

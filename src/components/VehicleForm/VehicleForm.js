@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../VehicleForm/VehicleForm.css';
-import { TextField, Button, Grid } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles'
-
-
+import { TextField, Button, Grid, FormGroup, 
+        FormControlLabel, Checkbox } from '@material-ui/core';
+import { CheckboxOutlineIcon, CheckboxIcon } from '@material-ui/icons';
+import { withStyles } from '@material-ui/core/styles';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import CarFeatures from '../CarFeatures/CarFeatures';
 
 const styles = {
     root: {
@@ -24,20 +26,40 @@ class VehicleForm extends Component {
         year: 0,
         make: '',
         model: '',
-        description: '', 
+        description: '',
         price: 0,
         city: '',
         state: '',
         zip: '',
-        image_url: ''
+        image_url: '',  
+        all_wheel_drive: false,
+        pet_friendly: false,
+        heated_seats: false,
+        convertible: false,
+        sunroof: false,
+        automatic: false,
+        manual: false,
+        electric: false,
+        gas: false,
+        hybrid: false, 
     }
 
     //Get value of inputs
     handleChangeFor = (propertyName) => (event) => {
         this.setState({
-            [propertyName]: event.target.value
+                ...this.state,
+                [propertyName]: event.target.value
         })
     }
+
+    handleChange = (name) => (event) => {
+        console.log('checkbox clicked')
+        this.setState({
+            ...this.state,
+            [name]: !this.state[name],
+        })
+    }
+
 
     //Submit informations of vehicle
     handleSubmit = (event) => {
@@ -54,21 +76,10 @@ class VehicleForm extends Component {
     
 
     render() {
+        console.log('In vehicleForm', this.props.reduxState.featureReducer)
         return(
             <div>
                 <h2 className="formHeader">Tell me about your car</h2>
-                {/* <form>
-                    <input onChange={this.handleChangeFor('year')} placeholder="Year" />
-                    <input onChange={this.handleChangeFor('make')} placeholder="Make" />
-                    <input onChange={this.handleChangeFor('model')} placeholder="Model" />
-                    <input onChange={this.handleChangeFor('description')} placeholder="Description" />
-                    <input onChange={this.handleChangeFor('price')} placeholder="Price Per Day" />
-                    <input onChange={this.handleChangeFor('city')} placeholder="City" />
-                    <input onChange={this.handleChangeFor('state')} placeholder="State" />
-                    <input onChange={this.handleChangeFor('zip')} placeholder="Zip" />
-                    <input onChange={this.handleChangeFor('image_url')} placeholder="Add image url" />
-                    <button onClick={this.handleSubmit}>Add Vehicle</button>
-                </form> */}
                 <Grid container justify="center">
                 <form className={this.props.classes.root} noValidate autoComplete="on">
                     <TextField
@@ -110,6 +121,9 @@ class VehicleForm extends Component {
                         onChange={this.handleChangeFor('price')}
                         margin="dense"
                         variant="outlined"
+                        InputProps={{
+                            startAdornment: <InputAdornment position="start">$</InputAdornment>,
+                        }}
                     />
                     <TextField
                         id="outlined-name"
@@ -143,14 +157,22 @@ class VehicleForm extends Component {
                         margin="dense"
                         variant="outlined"
                     />
+                    <CarFeatures handleChangeFeatures={this.handleChange} state={this.state} />
+                    <Grid container justify="space-around">
+                        <Button className={this.props.classes.addButton} onClick={this.handleSubmit} variant="contained" color="primary">Add Vehicle</Button>
+                    </Grid>
                 </form>
                 </Grid>
-                <Grid container justify="space-around">
-                    <Button className={this.props.classes.addButton} onClick={this.handleSubmit} variant="contained" color="primary">Add Vehicle</Button>
-                </Grid>
+                
             </div>
         )
     }
 }
 
-export default withStyles(styles)(connect()(VehicleForm));
+const mapStateToProps = (reduxState) => {
+    return {
+        reduxState
+    }
+}
+
+export default withStyles(styles)(connect(mapStateToProps)(VehicleForm));

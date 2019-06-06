@@ -16,10 +16,12 @@ class CarRequested extends Component {
 
     handleApprove = (orderId) => {
         this.props.dispatch({ type: 'UPDATE_STATUS', payload: { status: this.state.approveStatus, id: orderId } });
+        // this.props.dispatch({ type: 'FETCH_MY_ORDER' });
     }
 
     handleDecline = (id) => {
-        this.props.dispatch({ type: 'UPDATE_STATUS', payload: { status: this.state.declineStatus, id: id }})
+        this.props.dispatch({ type: 'UPDATE_STATUS', payload: { status: this.state.declineStatus, id: id }});
+        // this.props.dispatch({ type: 'FETCH_MY_ORDER' });
     }
 
     render() {        

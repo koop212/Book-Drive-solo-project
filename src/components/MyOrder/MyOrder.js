@@ -15,7 +15,7 @@ class MyOrder extends Component {
             <div>
                 <h2>Vehicles you booked</h2>
                 {this.props.reduxState.myOrderReducer.map(order => {
-                    if(order.status === 'Declined') {
+                    if(order.status == 'Declined') {
                         return (
                             <div key={order.id}>
                                 Your request for {order.make} {order.model} on <br />

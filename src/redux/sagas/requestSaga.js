@@ -5,7 +5,7 @@ function* fetchMyOrder() {
     try{
         let response = yield axios.get('/api/order');
         console.log('In fetchMyOrder', response);
-        yield put({type: 'SET_MY_ORDER', payload: response.data})
+        yield put({type: 'SET_MY_ORDER', payload: response.data});
     }catch(error) {
         console.log('Error in fetchMyOrder', error);
     }

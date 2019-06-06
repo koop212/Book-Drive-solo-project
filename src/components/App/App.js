@@ -21,6 +21,7 @@ import VehicleForm from '../VehicleForm/VehicleForm';
 import CarDetails from '../CarDetails/CarDetails';
 import ActivityPage from '../ActivityPage/ActivityPage';
 import AccountPage from '../AccountPage/AccountPage';
+import Checkout from '../Checkout/Checkout';
 
 
 
@@ -57,6 +58,13 @@ class App extends Component {
               path="/cardetails/:id"
               component={CarDetails}
             />
+
+            <ProtectedRoute
+              exact
+              path='/checkout'
+              component={Checkout}
+              />
+
 
             
             {/* For protected routes, the view could show one of several things on the same route.
