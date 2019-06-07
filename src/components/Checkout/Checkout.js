@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
+import { withRouter } from 'react-router-dom'
 
 
 class Checkout extends Component {
@@ -17,7 +18,8 @@ class Checkout extends Component {
             confirmButtonText: 'Yes, book it!'
         }).then((result) => {
             if (result.value) {
-                this.props.dispatch({ type: 'ADD_ORDER', payload: { start_date: this.props.startDate, end_date: this.props.endDate, vehicle_id: this.props.carId } })
+                this.props.dispatch({ type: 'ADD_ORDER', payload: { start_date: this.props.startDate, end_date: this.props.endDate, vehicle_id: this.props.carId } });
+                this.props.history.push('/activity')
                 Swal.fire(
                     'Booked!',
                     'Your request has been sent!',
@@ -35,4 +37,4 @@ class Checkout extends Component {
     }
 }
 
-export default connect()(Checkout);
+export default withRouter(connect()(Checkout));

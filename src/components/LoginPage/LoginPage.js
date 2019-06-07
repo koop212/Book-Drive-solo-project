@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = {
+    logIn: {
+      justify: 'center',
+    }
+}
 
 class LoginPage extends Component {
   state = {
@@ -32,49 +39,50 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div>
-        {this.props.errors.loginMessage && (
-          <h2
-            className="alert"
-            role="alert"
-          >
-            {this.props.errors.loginMessage}
-          </h2>
-        )}
-        <form onSubmit={this.login}>
-          <h1>Login</h1>
-          <div>
-            <label htmlFor="username">
-              Username:
-              <input
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="password">
-              Password:
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
-              />
-            </label>
-          </div>
-          <div>
-            <input
-              className="log-in"
-              type="submit"
-              name="submit"
-              value="Log In"
-            />
-          </div>
-        </form>
+      <div className={this.props.classes.logIn}>
         <center>
+       
+          {this.props.errors.loginMessage && (
+            <h2
+              className="alert"
+              role="alert"
+            >
+              {this.props.errors.loginMessage}
+            </h2>
+          )}
+          <form onSubmit={this.login}>
+            <h1>Login</h1>
+            <div>
+              <label htmlFor="username">
+                Username:
+              <input
+                  type="text"
+                  name="username"
+                  value={this.state.username}
+                  onChange={this.handleInputChangeFor('username')}
+                />
+              </label>
+            </div>
+            <div>
+              <label htmlFor="password">
+                Password:
+              <input
+                  type="password"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.handleInputChangeFor('password')}
+                />
+              </label>
+            </div>
+            <div>
+              <input
+                className="log-in"
+                type="submit"
+                name="submit"
+                value="Log In"
+              />
+            </div>
+          </form>
           <button
             type="button"
             className="link-button"
@@ -95,4 +103,4 @@ const mapStateToProps = state => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps)(LoginPage);
+export default withStyles(styles)(connect(mapStateToProps)(LoginPage));

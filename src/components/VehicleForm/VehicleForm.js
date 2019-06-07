@@ -71,7 +71,34 @@ class VehicleForm extends Component {
             return alert('Please fill in the blank')
         } else {
             this.props.dispatch({type: 'ADD_VEHICLE', payload: this.state});
+            this.props.history.push('/vehicle')
         }
+    }
+
+    handleClick = (event) => {
+        event.preventDefault();
+        this.setState({
+            year: 2018,
+            make: 'Tesla',
+            model: 'Model S',
+            description: 'Very smooth ride, you will not be dissapointed',
+            price: 120,
+            city: 'Minneapolis',
+            state: 'MN',
+            zip: '55406',
+            image_url: 'https://image.cnbcfm.com/api/v1/image/104836103-p100d-review.JPG?v=1510586447&w=1400&h=950',
+            all_wheel_drive: false,
+            pet_friendly: false,
+            heated_seats: true,
+            convertible: false,
+            sunroof: true,
+            automatic: true,
+            manual: false,
+            electric: true,
+            gas: false,
+            hybrid: false, 
+        })
+        console.log('is clicked')
     }
     
 
@@ -79,7 +106,8 @@ class VehicleForm extends Component {
         console.log('In vehicleForm', this.props.reduxState.featureReducer)
         return(
             <div>
-                <h2 className="formHeader">Tell me about your car</h2>
+                <h2 className="formHeader">Tell me about your car<p onClick={this.handleClick}>!</p></h2>
+                
                 <Grid container justify="center">
                 <form className={this.props.classes.root} noValidate autoComplete="on">
                     <TextField

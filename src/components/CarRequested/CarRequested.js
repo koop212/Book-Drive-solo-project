@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
+import '../CarRequested/CarRequested.css';
 
 
 class CarRequested extends Component {
@@ -32,18 +33,18 @@ class CarRequested extends Component {
                     if (request.status === 'Pending') {
                         return (
                             <div key={request.id}>
-                                <p>{request.username} would like to book your <br />
+                                <p><span className="username">{request.username}</span> would like to book your <br />
                                     {request.make} {request.model} for ${request.price} per day <br />
                                     on <Moment format='MM/DD/YYYY'>{request.start_date}</Moment> to <Moment format='MM/DD/YYYY'>{request.end_date}</Moment></p>
-                                <button onClick={() => this.handleApprove(request.id)}>Approve</button>
-                                <button onClick={() => this.handleDecline(request.id)}>Decline</button>
+                                <button className="twoButtons" onClick={() => this.handleApprove(request.id)}>Approve</button>
+                                <button className="twoButtons" onClick={() => this.handleDecline(request.id)}>Decline</button>
                             </div>
                             )
                     } else if (request.status === 'Approved' || request.status === 'Declined') {
                         return (
                             <div key={request.id}>
                                 <p>
-                                    {request.username} would like to book your <br />
+                                    <span className="username">{request.username}</span> would like to book your <br />
                                     {request.make} {request.model} for ${request.price} per day <br />
                                     on <Moment format='MM/DD/YYYY'>{request.start_date}</Moment> to <Moment format='MM/DD/YYYY'>{request.end_date}</Moment>
                                     <br/>

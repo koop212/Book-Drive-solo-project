@@ -29,7 +29,7 @@ class VehicleReview extends Component {
     render() {
         return(
             <div>
-                <h5>Comment and Rate this vehicle</h5>
+                <h5>Comment and Rate this vehicle when done</h5>
                 <div>
                     <Rating
                         emptySymbol= {<StarBorder />}

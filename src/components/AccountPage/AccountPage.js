@@ -3,6 +3,17 @@ import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
+import { Grid, Table, TableBody, TableCell, TableHead, TableRow, Paper } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles'
+const styles = {
+    carList: {
+        justifyContent: 'center',
+        width: '400px',
+    },
+    table: {
+        textAlign: 'center',
+    }
+}
 
 class AccountPage extends Component {
 
@@ -24,6 +35,7 @@ class AccountPage extends Component {
         event.preventDefault();
         this.props.dispatch({type: 'UPDATE_EMAIL', payload: {email: this.state.email, id: this.props.reduxState.user.id}})
         console.log('In handleSubmit');
+        this.refs.clear.value = '';
     }
 
 
@@ -56,29 +68,37 @@ class AccountPage extends Component {
         return(
             <div>
                 <label>Email</label>
-                <input placeholder="Update Email" onChange={this.handleChange} />
+                <input placeholder="Update Email" ref="clear" onChange={this.handleChange} />
                 <button onClick={this.handleSubmit}>Update</button>
-                <h2>Your Vehicle Listed</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Your Vehicle</th>
-                            <th>Remove</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-                            {this.props.reduxState.vehicleOwnerReducer.map((car, i) => {
-                                return (
-                                    <tr key={i}>
-                                        <td key={i}>{car.make} {car.model}</td>
-                                        <td><button className="deleteBtn" onClick={() => this.deleteVehicle(car.id)}>Remove</button></td>
-                                    </tr>
-                                    )  
-                            })}
-                        
-                    </tbody>
-                </table>
+                <Grid container >
+                    <Grid item>
+                        <Paper className={this.props.classes.carList}>
+                            <h2>Your Vehicle Listed</h2>
+                            
+                            <Table className={this.props.classes.table}>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>Your Vehicle</TableCell>
+                                        <TableCell>Remove</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    
+                                        {this.props.reduxState.vehicleOwnerReducer.map((car, i) => {
+                                            return (
+                                                <TableRow key={i}>
+                                                    <TableCell key={i}>{car.make} {car.model}</TableCell>
+                                                    <TableCell><button className="deleteBtn" onClick={() => this.deleteVehicle(car.id)}>Remove</button></TableCell>
+                                                </TableRow>
+                                                )  
+                                        })}
+                                    
+                                </TableBody>
+                            </Table>
+                            
+                        </Paper>
+                    </Grid>
+                </Grid>
                 <div>
                     <LogOutButton />
                 </div>
@@ -93,4 +113,4 @@ const mapStateToProps = (reduxState) => {
     }
 }
 
-export default connect(mapStateToProps)(AccountPage);
+export default withStyles(styles)(connect(mapStateToProps)(AccountPage));

@@ -4,6 +4,7 @@ import '../ActivityPage/Activity.css';
 // import VehicleReview from '../VehicleReview/VehicleReview';
 import MyOrder from '../MyOrder/MyOrder';
 import CarRequested from '../CarRequested/CarRequested';
+import { Grid } from '@material-ui/core';
 
 
 
@@ -17,19 +18,15 @@ class ActivityPage extends Component {
             <div className="activity">
                 {/* <pre>{JSON.stringify(this.props.reduxState.vehicleOwnerReducer)}</pre> */}
                 <h2 className="notification">Notifications</h2>
-                <div>
-                    {/* <VehicleReview /> */}
-                </div>
-                <div>
-                    <MyOrder />
-                    <CarRequested />
-                </div>
-                {/* <h2>Your Vehicle Listed</h2>
-                <ul>
-                    {this.props.reduxState.vehicleOwnerReducer.map((car, i) => {
-                        return (<li key={i}>{car.make} {car.model} <button className="deleteBtn" onClick={() => this.deleteVehicle(car.id)}>Remove</button></li>)
-                    })}
-                </ul> */}
+                <Grid container justify='center' direction='row'>
+                    <Grid item sm={6}>
+                        <MyOrder />
+                    </Grid>
+                    <Grid item sm={6}>
+                        <CarRequested />
+                    </Grid>
+                </Grid>
+                
             </div>
         )
     }
