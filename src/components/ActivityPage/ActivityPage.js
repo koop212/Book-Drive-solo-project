@@ -10,6 +10,7 @@ import { Grid } from '@material-ui/core';
 
 class ActivityPage extends Component {
 
+    
 
     render() {
         

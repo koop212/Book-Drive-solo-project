@@ -7,7 +7,6 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     if(req.isAuthenticated()) {
         let order = req.body;
         console.log('vehicle id from order post route', order.vehicle_id);
-
         let queryText = `INSERT INTO "order" ("start_date", "end_date", "user_id", "vehicle_id")
                         VALUES ($1, $2, $3, $4);`;
         pool.query(queryText, [order.start_date, order.end_date, req.user.id, order.vehicle_id])
@@ -43,7 +42,7 @@ router.get('/request', (req, res) => {
                     JOIN "user" ON "order".user_id = "user".id
                     JOIN vehicle ON "order".vehicle_id = vehicle.id
                     WHERE "vehicle".user_id = $1
-                    ORDER BY "order"."start_date";`;
+                    ORDER BY "order"."id";`;
     pool.query(queryText, [req.user.id])
         .then((results) => {
             console.log('results.row:', results.rows);

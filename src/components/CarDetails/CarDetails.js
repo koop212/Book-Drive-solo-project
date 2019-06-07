@@ -9,7 +9,7 @@ class CarDetails extends Component {
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_VEHICLE_DETAILS', payload: this.props.match.params.id })
         console.log('in Match route', this.props.match.params.id);
-        
+        window.scrollTo(0, 0)
     }
 
     render() {
@@ -22,7 +22,6 @@ class CarDetails extends Component {
                         <div key={i}>
                             {console.log('in Cardetails', car.images)}
                             <div>
-                                {/* <img key={i} className="imageDetails" src={car.image_url} alt={car.model} /> */}
                                 <ImageStepper carPic={car.images} car={car}/>
                             </div>
                             <TheCar key={i} car={car} carId={this.props.match.params.id}/>

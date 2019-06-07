@@ -37,6 +37,21 @@ class LoginPage extends Component {
     });
   }
 
+  handleClick = (event) => {
+    this.setState({
+      username: 'koop',
+      password: 'qwerty'
+    })
+  }
+
+  handleLog = (event) => {
+    this.setState({
+      username: '911car',
+      password: 'qwerty'
+    })
+  }
+
+
   render() {
     return (
       <div className={this.props.classes.logIn}>
@@ -51,7 +66,7 @@ class LoginPage extends Component {
             </h2>
           )}
           <form onSubmit={this.login}>
-            <h1>Login</h1>
+            <h1 onClick={this.handleClick}>Login</h1>
             <div>
               <label htmlFor="username">
                 Username:
@@ -64,7 +79,7 @@ class LoginPage extends Component {
               </label>
             </div>
             <div>
-              <label htmlFor="password">
+              <label onClick={this.handleLog} htmlFor="password">
                 Password:
               <input
                   type="password"

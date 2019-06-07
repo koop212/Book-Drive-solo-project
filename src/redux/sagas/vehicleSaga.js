@@ -25,6 +25,7 @@ function* addVehicle(action) {
     try{
         yield axios.post('/api/vehicle', action.payload);
         yield put ({type: 'FETCH_VEHICLE'})
+        yield put({ type: 'FETCH_IMAGE'})
     }catch(error) {
         console.log('Error in addVehicle', error);
     }

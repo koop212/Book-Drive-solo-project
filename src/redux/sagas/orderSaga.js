@@ -6,6 +6,7 @@ function* addOrder(action) {
     try{
         console.log('In addOrderSaga', action.payload);
         yield axios.post('/api/order', action.payload);
+        yield put({ type: 'FETCH_MY_ORDER' });
     }catch(error) {
         console.log('Error in addOrder', error);
     }

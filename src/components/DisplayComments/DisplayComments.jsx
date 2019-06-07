@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withStyles } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
     firstName: {
@@ -21,8 +21,8 @@ class DisplayComments extends Component {
                 {this.props.reduxState.commentReducer.map(comment => {
                     if(this.props.carId == comment.vehicle_id) {
                         return (
-                            <div key={comment.id}>
-                                <p><span className={style.firstName}>{comment.first_name}:</span> {comment.comment}</p>
+                            <div>
+                                <p key={comment.id}><span className={style.firstName}>{comment.first_name}:</span> {comment.comment}</p>
                             </div>
                         )
                     }

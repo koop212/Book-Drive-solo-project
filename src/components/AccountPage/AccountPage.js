@@ -7,11 +7,12 @@ import { Grid, Table, TableBody, TableCell, TableHead, TableRow, Paper } from '@
 import { withStyles } from '@material-ui/core/styles'
 const styles = {
     carList: {
-        justifyContent: 'center',
         width: '400px',
+        textAlign: 'center',
     },
     table: {
         textAlign: 'center',
+        width: '400px',
     }
 }
 
@@ -23,6 +24,7 @@ class AccountPage extends Component {
 
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_OWNER_VEHICLE' });
+        window.scrollTo(0, 0)
     }
 
     handleChange = (event) => {
@@ -70,7 +72,7 @@ class AccountPage extends Component {
                 <label>Email</label>
                 <input placeholder="Update Email" ref="clear" onChange={this.handleChange} />
                 <button onClick={this.handleSubmit}>Update</button>
-                <Grid container >
+                <Grid container justify="center">
                     <Grid item>
                         <Paper className={this.props.classes.carList}>
                             <h2>Your Vehicle Listed</h2>

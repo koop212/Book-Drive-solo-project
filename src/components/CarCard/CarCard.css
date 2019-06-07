@@ -1,14 +1,14 @@
 .carImg {
     height: 200px;
-    width: 260px;
+    width: 270px;
     object-fit: cover;
 }
 
 .carCard {
     height: 200px;
-    width: 260px;
+    width: 270px;
     display: inline-block;
-    margin: 20px;
+    margin: 10px;
 }
 
 .mainCard {

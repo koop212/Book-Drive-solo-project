@@ -42,11 +42,11 @@ class App extends Component {
             <Redirect exact from="/" to="/home" />
             {/* Visiting localhost:3000/about will show the about page.
             This is a route anyone can see, no login necessary */}
-            <Route
+            {/* <Route
               exact
               path="/about"
               component={AboutPage}
-            />
+            /> */}
             <Route
               exact
               path="/vehicle"
@@ -78,11 +78,11 @@ class App extends Component {
             />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
-            <ProtectedRoute
+            {/* <ProtectedRoute
               exact
               path="/info"
               component={InfoPage}
-            />
+            /> */}
 
             <ProtectedRoute
               exact

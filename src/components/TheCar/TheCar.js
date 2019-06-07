@@ -41,7 +41,7 @@ const styles = {
     },
     paper: {
         width: '600px',
-        paddingLeft: '80px'
+        margin: '40px'
     },
     commentHeader: {
         justifyContent: 'center',

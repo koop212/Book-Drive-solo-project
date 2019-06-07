@@ -9,9 +9,7 @@ class AddRate extends Component {
 
     render() {
         return(
-            // <p>Submit button goes here</p>
-            <button onClick={this.submitRate}>Submit</button>
-
+            <p onClick={this.props.click}><button onClick={this.submitRate}>Submit</button></p>
         )
     }
 }

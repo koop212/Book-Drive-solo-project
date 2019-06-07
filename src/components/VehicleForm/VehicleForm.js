@@ -106,9 +106,9 @@ class VehicleForm extends Component {
         console.log('In vehicleForm', this.props.reduxState.featureReducer)
         return(
             <div>
-                <h2 className="formHeader">Tell me about your car<p onClick={this.handleClick}>!</p></h2>
+                <h2 onClick={this.handleClick} className="formHeader">Tell me about your car</h2>
                 
-                <Grid container justify="center">
+                <Grid container justify="center"> 
                 <form className={this.props.classes.root} noValidate autoComplete="on">
                     <TextField
                         id="outlined-name"
@@ -117,6 +117,7 @@ class VehicleForm extends Component {
                         onChange={this.handleChangeFor('year')}
                         margin="dense"
                         variant="outlined"
+                        value={this.state.year}
                     />
                     <TextField
                         id="outlined-name"
@@ -125,6 +126,7 @@ class VehicleForm extends Component {
                         onChange={this.handleChangeFor('make')}
                         margin="dense"
                         variant="outlined"
+                        value={this.state.make}
                     />
                     <TextField
                         id="outlined-name"
@@ -133,6 +135,7 @@ class VehicleForm extends Component {
                         onChange={this.handleChangeFor('model')}
                         margin="dense"
                         variant="outlined"
+                        value={this.state.model}
                     />
                     <TextField
                         id="outlined-name"
@@ -141,6 +144,7 @@ class VehicleForm extends Component {
                         onChange={this.handleChangeFor('description')}
                         margin="dense"
                         variant="outlined"
+                        value={this.state.description}
                     />
                     <TextField
                         id="outlined-name"
@@ -148,9 +152,11 @@ class VehicleForm extends Component {
                         fullWidth
                         onChange={this.handleChangeFor('price')}
                         margin="dense"
+                        value={this.state.price}
                         variant="outlined"
                         InputProps={{
-                            startAdornment: <InputAdornment position="start">$</InputAdornment>,
+                        startAdornment: <InputAdornment position="start">$</InputAdornment>
+                        
                         }}
                     />
                     <TextField
@@ -160,6 +166,8 @@ class VehicleForm extends Component {
                         onChange={this.handleChangeFor('city')}
                         margin="dense"
                         variant="outlined"
+                        value={this.state.city}
+
                     />
                     <TextField
                         id="outlined-name"
@@ -168,6 +176,7 @@ class VehicleForm extends Component {
                         onChange={this.handleChangeFor('state')}
                         margin="dense"
                         variant="outlined"
+                        value={this.state.state}
                     />
                     <TextField
                         id="outlined-name"
@@ -175,7 +184,8 @@ class VehicleForm extends Component {
                         fullWidth
                         onChange={this.handleChangeFor('zip')}
                         margin="dense"
-                        variant="outlined"
+                        variant="outlined" 
+                        value={this.state.zip}
                     />
                     <TextField
                         id="outlined-name"
@@ -184,6 +194,7 @@ class VehicleForm extends Component {
                         onChange={this.handleChangeFor('image_url')}
                         margin="dense"
                         variant="outlined"
+                        value={this.state.image_url}
                     />
                     <CarFeatures handleChangeFeatures={this.handleChange} state={this.state} />
                     <Grid container justify="space-around">

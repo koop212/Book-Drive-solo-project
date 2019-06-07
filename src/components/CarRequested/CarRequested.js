@@ -9,6 +9,7 @@ class CarRequested extends Component {
     state = {
         approveStatus: 'Approved',
         declineStatus: 'Declined',
+        returnedStatus: 'Returned'
     }
 
     componentDidMount() {
@@ -25,6 +26,12 @@ class CarRequested extends Component {
         // this.props.dispatch({ type: 'FETCH_MY_ORDER' });
     }
 
+    handleReturned = (id) => {
+        this.props.dispatch({ type: 'UPDATE_STATUS', payload: { status: this.state.returnedStatus, id: id}});
+    }
+
+
+
     render() {        
         return(
             <div>
@@ -40,7 +47,7 @@ class CarRequested extends Component {
                                 <button className="twoButtons" onClick={() => this.handleDecline(request.id)}>Decline</button>
                             </div>
                             )
-                    } else if (request.status === 'Approved' || request.status === 'Declined') {
+                    } else if (request.status === 'Approved') {
                         return (
                             <div key={request.id}>
                                 <p>
@@ -48,6 +55,20 @@ class CarRequested extends Component {
                                     {request.make} {request.model} for ${request.price} per day <br />
                                     on <Moment format='MM/DD/YYYY'>{request.start_date}</Moment> to <Moment format='MM/DD/YYYY'>{request.end_date}</Moment>
                                     <br/>
+                                    {request.status}
+                                    <br/>
+                                    <button onClick={() => this.handleReturned(request.id)}>Car returned</button>
+                                </p>
+                            </div>
+                        )
+                    } else if (request.status === 'Declined' || request.status === 'Returned') {
+                        return (
+                            <div key={request.id}>
+                                <p>
+                                    <span className="username">{request.username}</span> would like to book your <br />
+                                    {request.make} {request.model} for ${request.price} per day <br />
+                                    on <Moment format='MM/DD/YYYY'>{request.start_date}</Moment> to <Moment format='MM/DD/YYYY'>{request.end_date}</Moment>
+                                    <br />
                                     {request.status}
                                 </p>
                             </div>

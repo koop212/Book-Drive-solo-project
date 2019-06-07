@@ -22,7 +22,7 @@ const styles = theme => ({
         backgroundColor: theme.palette.background.default,
     },
     img: {
-        height: 355,
+        height: 450,
         maxWidth: '100%',
         overflow: 'hidden',
         display: 'block',
