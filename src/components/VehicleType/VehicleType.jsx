@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = {
+    type: {
+        fontSize: '18px',
+    }
+}
 
 class VehicleType extends Component {
     render() {
@@ -15,11 +22,10 @@ class VehicleType extends Component {
         }
         return(
             <div>
-                <h4>Vehicle Type:</h4>
-                <h5>{carType}</h5>
+                <h4>Vehicle Type: <br/><span className={this.props.classes.type}>{carType}</span></h4>
             </div>
         )
     }
 }
 
-export default connect()(VehicleType);
+export default withStyles(styles)(connect()(VehicleType));

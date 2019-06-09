@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
+import { Paper, Grid } from '@material-ui/core'
+import '../LoginPage/LoginPage.css';
+
 
 const styles = {
     logIn: {
-      justify: 'center',
+      // justifyContent: 'center',
+    position: 'absolute',
+    top: '15%',
+    left: '55%',
+    transform: 'translate(-50 %, -50 %)',
+    },
+    paper: {
+      height: '300px',
+      width: '300px',
+      direction: 'row',
+      // justifyContent: 'center',
+      marginTop: '70px',
+      marginLeft: '100px'
     }
 }
 
@@ -54,58 +69,70 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div className={this.props.classes.logIn}>
-        <center>
-       
-          {this.props.errors.loginMessage && (
-            <h2
-              className="alert"
-              role="alert"
+      <div>
+        <div>
+          <img className="loginImg" src="https://wallpapershome.com/images/wallpapers/jeep-switchback-2560x1440-hd-wallpaper-jeep-wrangler-suv-concept-13333.jpg" />
+        </div>
+      <Grid container className={this.props.classes.logIn}>
+        <Paper 
+          className={this.props.classes.paper} 
+          style={{
+          backgroundColor: 'transparent', 
+          boxShadow: 'none'
+          }}>
+          <center>
+        
+            {this.props.errors.loginMessage && (
+              <h2
+                className="alert"
+                role="alert"
+              >
+                {this.props.errors.loginMessage}
+              </h2>
+            )}
+            <form onSubmit={this.login}>
+              <h1 onClick={this.handleClick}>Login</h1>
+              <div>
+                <label htmlFor="username">
+                  Username:
+                <input
+                    type="text"
+                    name="username"
+                    value={this.state.username}
+                    onChange={this.handleInputChangeFor('username')}
+                  />
+                </label>
+              </div>
+              <div>
+                <label onClick={this.handleLog} htmlFor="password">
+                  Password:
+                <input
+                    type="password"
+                    name="password"
+                    value={this.state.password}
+                    onChange={this.handleInputChangeFor('password')}
+                  />
+                </label>
+              </div>
+              <div>
+                <input
+                  className="log-in"
+                  type="submit"
+                  name="submit"
+                  value="Log In"
+                />
+              </div>
+            </form>
+            <button
+              type="button"
+              className="link-button"
+              onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
             >
-              {this.props.errors.loginMessage}
-            </h2>
-          )}
-          <form onSubmit={this.login}>
-            <h1 onClick={this.handleClick}>Login</h1>
-            <div>
-              <label htmlFor="username">
-                Username:
-              <input
-                  type="text"
-                  name="username"
-                  value={this.state.username}
-                  onChange={this.handleInputChangeFor('username')}
-                />
-              </label>
-            </div>
-            <div>
-              <label onClick={this.handleLog} htmlFor="password">
-                Password:
-              <input
-                  type="password"
-                  name="password"
-                  value={this.state.password}
-                  onChange={this.handleInputChangeFor('password')}
-                />
-              </label>
-            </div>
-            <div>
-              <input
-                className="log-in"
-                type="submit"
-                name="submit"
-                value="Log In"
-              />
-            </div>
-          </form>
-          <button
-            type="button"
-            className="link-button"
-            onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
-          >
-            Register
-          </button>
-        </center>
+              Register
+            </button>
+          </center>
+        </Paper>
+      </Grid>
       </div>
     );
   }

@@ -10,7 +10,6 @@ import FeatureDisplay from '../FeatureDisplay/FeatureDisplay';
 const styles = {
     root: {
         justifyContent: 'center', 
-        // flexDirection: 'row',
         display: 'flex',
     },
     price: {
@@ -25,9 +24,8 @@ const styles = {
     carInfo: {
         fontSize: '30px',
     },
-    description: {
+    category: {
         paddingLeft: '200px',
-        // paddingTop: '10px',
     },
     date: {
         fontSize: '20px',
@@ -41,11 +39,18 @@ const styles = {
     },
     paper: {
         width: '600px',
-        margin: '40px'
+        margin: '10px',
     },
     commentHeader: {
         justifyContent: 'center',
+    },
+    text: {
+        fontSize: '30px',
+    },
+    description: {
+        fontSize: '24px'
     }
+
     
 }
 
@@ -58,11 +63,11 @@ class TheCar extends Component {
             <div>
                 <div className={style.root}>
                     <Grid container sm={12}>
-                        <Grid className={style.description} item sm={6}>
+                        <Grid className={style.category} item sm={6}>
                             <h3 className={style.rating}><DisplayRating carId={this.props.carId} /></h3>
-                            <h4>The Car: <br/><span className={style.carInfo}>{carInfo.make} {carInfo.model} {carInfo.year}</span></h4>
-                            <h4>Hosted By: <br/>{carInfo.first_name}</h4>
-                            <h4>Descripton: <br/>{carInfo.description}</h4>
+                            <h4>The Car: <br /><span className={style.carInfo}>{carInfo.make} {carInfo.model} <span className="carYear">{carInfo.year}</span></span></h4>
+                            <h4>Hosted By: <br/><span className={style.text}>{carInfo.first_name}</span></h4>
+                            <h4>Description: <br /><span className={style.description}>{carInfo.description}</span></h4>
                             <FeatureDisplay carId={this.props.carId}/>
                         </Grid>
                         <Grid item sm={6} className={style.price}>
@@ -79,7 +84,7 @@ class TheCar extends Component {
                 </Grid>
                 <Grid container className={style.comment}>
                     <Paper className={style.paper}>
-                        <DisplayComments carId={this.props.carId} />
+                        <DisplayComments id="comment" carId={this.props.carId} />
                     </Paper>
                 </Grid>
             </div>

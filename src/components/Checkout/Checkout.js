@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Swal from 'sweetalert2/dist/sweetalert2.js'
-import 'sweetalert2/src/sweetalert2.scss'
-import { withRouter } from 'react-router-dom'
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import 'sweetalert2/src/sweetalert2.scss';
+import { withRouter } from 'react-router-dom';
+import { Button } from '@material-ui/core';
 
 
 class Checkout extends Component {
@@ -32,7 +33,7 @@ class Checkout extends Component {
     render() {
         console.log('dates showing from checkout component', this.props.startDate, this.props.endDate);
         return(
-            <button className="checkoutButton" onClick={this.handleSubmit}>Checkout</button>
+            <Button className="checkoutButton" size="small" variant="contained" color="primary" onClick={this.handleSubmit}>Checkout</Button>
         )
     }
 }

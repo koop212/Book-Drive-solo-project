@@ -2,6 +2,7 @@
     height: 200px;
     width: 270px;
     object-fit: cover;
+    cursor: pointer;
 }
 
 .carCard {
@@ -9,6 +10,7 @@
     width: 270px;
     display: inline-block;
     margin: 10px;
+    margin-top: 30px;
 }
 
 .mainCard {
@@ -18,4 +20,22 @@
 .carInfo {
     text-align: center;
     margin-top: -10px
+}
+
+.year {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.makeModel {
+    font-weight: bold;
+}
+
+.day {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.cardPrice {
+    font-weight: bold;
 }

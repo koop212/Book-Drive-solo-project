@@ -5,6 +5,11 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = {
     firstName: {
         fontSize: '20px',
+        fontWeight: 'bold',
+    },
+    comment: {
+        margin: '30px',
+        textAlign: 'center'
     }
 }
 
@@ -17,13 +22,13 @@ class DisplayComments extends Component {
     render() {
         let style = this.props.classes;
         return(
-            <div>
+            <div >
                 {this.props.reduxState.commentReducer.map(comment => {
                     if(this.props.carId == comment.vehicle_id) {
                         return (
-                            <div>
-                                <p key={comment.id}><span className={style.firstName}>{comment.first_name}:</span> {comment.comment}</p>
-                            </div>
+                            // <div className={this.props.classes.comment}>
+                                <p className={this.props.classes.comment} key={comment.id}><span className={style.firstName}>{comment.first_name}:</span> {comment.comment}</p>
+
                         )
                     }
                     return null;

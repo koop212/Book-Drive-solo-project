@@ -28,3 +28,11 @@
     font-size: 30px;
     padding-left: 20px;
 } */
+
+#comment {
+    text-align: center;
+}
+
+.carYear {
+    font-size: 20px;
+}

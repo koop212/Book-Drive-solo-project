@@ -12,7 +12,10 @@ import { withStyles } from '@material-ui/core/styles'
 const styles = {
   searchField: {
     backgroundColor: 'white',
-    color: 'black'
+    color: 'black',
+  },
+  input1: {
+    // height: '90px'
   }
 }
 
@@ -44,12 +47,16 @@ class UserPage extends Component {
               <form className="search">
                 <TextField
                   value={this.state.city}
-                  label="Location"
+                  style={{
+                    backgroundColor: 'white',
+                  }}
+                  margin="dense"
                   variant="outlined"
+                  label="Search Location"
+                  // style={{ height: 10 }}
                   className={this.props.classes.searchField}
-                  inputStyle={{ backgroundColor: 'white' }}
-                  containerStyle={{ backgroundColor: 'white', borderWidth: 1, borderRadius: 5 }}
-                  placeholderTextColor={'#g5g5g5'}
+                  // inputStyle={{ backgroundColor: 'white' }}
+                  // containerStyle={{ backgroundColor: 'white', borderWidth: 1, borderRadius: 5 }}
                   InputProps={{
                     endAdornment: (
                       <InputAdornment>
@@ -67,8 +74,6 @@ class UserPage extends Component {
         <h1 id="welcome">
           Welcome, {this.props.user.username}!
       </h1>
-        {/* <p>Your ID is: {props.user.id}</p> */}
-        {/* <LogOutButton className="log-in" /> */}
       </div>
     )
   }

@@ -7,7 +7,7 @@ import './Nav.css';
 const Nav = (props) => (
   <div className="nav">
     <Link to="/home">
-      <h2 className="nav-title">Air B&D</h2>
+        <h2 className="nav-title">Air B&D</h2>
     </Link>
     <div className="nav-right">
       <Link className="nav-link" to="/home">
@@ -25,12 +25,9 @@ const Nav = (props) => (
         </>
       )} */}
       {/* Always show this link since the about page is not protected */}
-      {/* <Link className="nav-link" to="/about">
-        About
-      </Link> */}
-      <Link className="nav-link" to="/vehicle">
+      {/* <Link className="nav-link" to="/vehicle">
         Car List
-      </Link>
+      </Link> */}
       <Link className="nav-link" to="/vehicleform">
         List your car
       </Link>

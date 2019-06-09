@@ -28,7 +28,7 @@ class CarCard extends Component {
                 </Card>
                 <Typography paragraph>
                     <div>
-                        <p className="carInfo">{this.props.car.year} {this.props.car.make} {this.props.car.model} ${this.props.car.price}/Day</p>
+                        <p className="carInfo"><span className="makeModel">{this.props.car.make} {this.props.car.model}</span> <span className="year">{this.props.car.year}</span> <span className="cardPrice">${this.props.car.price}</span><span className="day">/Day</span></p>
                     </div>
                 </Typography>
             </div>

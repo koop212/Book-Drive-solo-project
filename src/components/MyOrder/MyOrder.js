@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Moment from 'react-moment';
 import VehicleReview from '../VehicleReview/VehicleReview.jsx';
 import { withStyles } from '@material-ui/core';
+import '../MyOrder/MyOrder.css';
 
 const styles = {
     order: {
@@ -21,7 +22,7 @@ class MyOrder extends Component {
     render() {
         return (
             <div>
-                <h2>Vehicles you booked</h2>
+                <h2 className="booked">Vehicles you booked</h2>
                 {this.props.reduxState.myOrderReducer.map(order => {
                     if(order.status == 'Declined') {
                         return (

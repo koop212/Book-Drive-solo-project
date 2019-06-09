@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
 import '../CarRequested/CarRequested.css';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 
 
 class CarRequested extends Component {
@@ -17,25 +19,75 @@ class CarRequested extends Component {
     }
 
     handleApprove = (orderId) => {
-        this.props.dispatch({ type: 'UPDATE_STATUS', payload: { status: this.state.approveStatus, id: orderId } });
-        // this.props.dispatch({ type: 'FETCH_MY_ORDER' });
+        Swal.fire({
+            title: 'Are you want to approve the request?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, approve!'
+        }).then((result) => {
+            if (result.value) {
+                this.props.dispatch({ type: 'UPDATE_STATUS', payload: { status: this.state.approveStatus, id: orderId } });
+                Swal.fire(
+                    'Approved!',
+                    'You have approved the request for your vehicle.',
+                    'success'
+                )
+            }
+        })
     }
 
     handleDecline = (id) => {
-        this.props.dispatch({ type: 'UPDATE_STATUS', payload: { status: this.state.declineStatus, id: id }});
-        // this.props.dispatch({ type: 'FETCH_MY_ORDER' });
+        Swal.fire({
+            title: 'Are you want to decline the request?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, decline!'
+        }).then((result) => {
+            if (result.value) {
+                this.props.dispatch({ type: 'UPDATE_STATUS', payload: { status: this.state.declineStatus, id: id } });
+                Swal.fire(
+                    'Declined!',
+                    'You have declined the request for your vehicle.',
+                    'success'
+                )
+            }
+        })
     }
 
     handleReturned = (id) => {
-        this.props.dispatch({ type: 'UPDATE_STATUS', payload: { status: this.state.returnedStatus, id: id}});
-    }
+            Swal.fire({
+                title: 'Are you sure the car has been returned?',
+                text: "You won't be able to revert this!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, it is returned!'
+            }).then((result) => {
+                if (result.value) {
+                    this.props.dispatch({ type: 'UPDATE_STATUS', payload: { status: this.state.returnedStatus, id: id } });
+                    Swal.fire(
+                        'Returned!',
+                        'Your car has been returned.',
+                        'success'
+                    )
+                }
+            })
+        }
+    
 
 
 
     render() {        
         return(
             <div>
-                <h2>Requests to book your vehicle</h2>
+                <h2 className="request">Requests to book your vehicle</h2>
                 {this.props.requestedCar.map(request => {
                     if (request.status === 'Pending') {
                         return (

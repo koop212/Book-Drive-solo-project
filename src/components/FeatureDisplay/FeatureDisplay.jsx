@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withStyles } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import VehicleType from '../VehicleType/VehicleType';
 import Transmission from '../Transmission/Transmission.jsx';
 
 const styles = {
     features: {
         flexDirection: 'column'
+    },
+    feature: {
+        fontSize: '18px',
     }
 }
 
@@ -44,8 +47,7 @@ class FeatureDisplay extends Component {
                         return (
                             <div>
                                 <div className={this.props.classes.features}>
-                                    <h4>Features:</h4>
-                                    <h5>{features}</h5>
+                                    <h4>Features: <br /><span className={this.props.classes.feature}>{features}</span></h4>
                                 </div>
                                 <div>
                                     <VehicleType carType={feature} />

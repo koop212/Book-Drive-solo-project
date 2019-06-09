@@ -7,12 +7,18 @@ import { Grid, Table, TableBody, TableCell, TableHead, TableRow, Paper } from '@
 import { withStyles } from '@material-ui/core/styles'
 const styles = {
     carList: {
-        width: '400px',
+        width: '600px',
         textAlign: 'center',
+        marginTop: '80px',
+        padding: '30px',
     },
     table: {
         textAlign: 'center',
-        width: '400px',
+        width: '600px',
+    },
+    logOut: {
+        margin: '50px',
+        textAlign: 'center',
     }
 }
 
@@ -61,7 +67,6 @@ class AccountPage extends Component {
                 )
             }
         })
-        console.log('deleteVehicle function', carId);
     }
 
 
@@ -69,15 +74,12 @@ class AccountPage extends Component {
     render() {
         return(
             <div>
-                <label>Email</label>
-                <input placeholder="Update Email" ref="clear" onChange={this.handleChange} />
-                <button onClick={this.handleSubmit}>Update</button>
                 <Grid container justify="center">
                     <Grid item>
                         <Paper className={this.props.classes.carList}>
-                            <h2>Your Vehicle Listed</h2>
-                            
-                            <Table className={this.props.classes.table}>
+                            <h2>Your Vehicle List</h2>
+                            <div className={this.props.classes.table}>
+                            <Table >
                                 <TableHead>
                                     <TableRow>
                                         <TableCell>Your Vehicle</TableCell>
@@ -97,11 +99,11 @@ class AccountPage extends Component {
                                     
                                 </TableBody>
                             </Table>
-                            
+                            </div>
                         </Paper>
                     </Grid>
                 </Grid>
-                <div>
+                <div className={this.props.classes.logOut}>
                     <LogOutButton />
                 </div>
             </div>

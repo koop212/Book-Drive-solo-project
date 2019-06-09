@@ -43,6 +43,7 @@ class StartEndDate extends React.Component {
                 <DatePicker
                     selected={this.state.start_date}
                     onChange={this.handleStartChange}
+                    minDate={new Date()}
                 />
                 <br/>
                 <label>End Date</label>
@@ -50,6 +51,7 @@ class StartEndDate extends React.Component {
                 <DatePicker
                     selected={this.state.end_date}
                     onChange={this.handleEndChange}
+                    minDate={new Date()}
                 />
                 <br/>
                 <div className="checkoutBtn">
