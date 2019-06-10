@@ -6,20 +6,16 @@ import '../LoginPage/LoginPage.css';
 
 
 const styles = {
-    logIn: {
-      // justifyContent: 'center',
-    position: 'absolute',
-    top: '15%',
-    left: '55%',
-    transform: 'translate(-50 %, -50 %)',
-    },
     paper: {
       height: '300px',
       width: '300px',
       direction: 'row',
-      // justifyContent: 'center',
       marginTop: '70px',
-      marginLeft: '100px'
+      marginLeft: '100px',
+      position: 'absolute',
+      top: '15%',
+      left: '55%',
+      transform: 'translate(-50 %, -50 %)',
     }
 }
 
@@ -73,7 +69,7 @@ class LoginPage extends Component {
         <div>
           <img className="loginImg" src="https://wallpapershome.com/images/wallpapers/jeep-switchback-2560x1440-hd-wallpaper-jeep-wrangler-suv-concept-13333.jpg" />
         </div>
-      <Grid container className={this.props.classes.logIn}>
+      <Grid container>
         <Paper 
           className={this.props.classes.paper} 
           style={{

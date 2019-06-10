@@ -87,7 +87,7 @@ class CarRequested extends Component {
     render() {        
         return(
             <div>
-                <h2 className="request">Requests to book your vehicle</h2>
+                <h2 className="request">Requests for your vehicle</h2>
                 {this.props.requestedCar.map(request => {
                     if (request.status === 'Pending') {
                         return (

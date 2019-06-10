@@ -22,7 +22,7 @@ class MyOrder extends Component {
     render() {
         return (
             <div>
-                <h2 className="booked">Vehicles you booked</h2>
+                <h2 className="booked">Vehicles you requested</h2>
                 {this.props.reduxState.myOrderReducer.map(order => {
                     if(order.status == 'Declined') {
                         return (

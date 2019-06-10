@@ -3,19 +3,20 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
+import MenuList from '../MenuList/MenuList';
 
 const Nav = (props) => (
   <div className="nav">
     <Link to="/home">
-        <h2 className="nav-title">Air B&D</h2>
+        <h2 className="nav-title">B<span className="amp">&</span>D</h2>
     </Link>
     <div className="nav-right">
-      <Link className="nav-link" to="/home">
-        {/* Show this link if they are logged in or not,
+      {/* <Link className="nav-link" to="/home">
+        Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
-        and call this link 'Login / Register' if they are not */}
+        and call this link 'Login / Register' if they are not
         {props.user.id ? 'Home' : 'Login / Register'}
-      </Link>
+      </Link> */}
       {/* Show the link to the info page and the logout button if the user is logged in */}
       {/* {props.user.id && (
         <>
@@ -24,10 +25,9 @@ const Nav = (props) => (
           <LogOutButton className="nav-link"/>
         </>
       )} */}
-      {/* Always show this link since the about page is not protected */}
       {/* <Link className="nav-link" to="/vehicle">
         Car List
-      </Link> */}
+      </Link>
       <Link className="nav-link" to="/vehicleform">
         List your car
       </Link>
@@ -36,6 +36,9 @@ const Nav = (props) => (
       </Link>
       <Link className="nav-link" to="/account">
         Account
+      </Link> */}
+      <Link className="nav-link">
+        <MenuList />
       </Link>
     </div>
   </div>

@@ -7,6 +7,8 @@ import { CheckboxOutlineIcon, CheckboxIcon } from '@material-ui/icons';
 import { withStyles } from '@material-ui/core/styles';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import CarFeatures from '../CarFeatures/CarFeatures';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import 'sweetalert2/src/sweetalert2.scss';
 
 const styles = {
     root: {
@@ -70,10 +72,17 @@ class VehicleForm extends Component {
         && car.price === '' && car.city === '' && car.state === '' && car.zip === '' && car.image_url === '') {
             return alert('Please fill in the blank')
         } else {
-            this.props.dispatch({type: 'ADD_VEHICLE', payload: this.state});
-            this.props.history.push('/vehicle')
+            Swal.fire({
+                type: 'success',
+                title: 'Thank you for submitting your vehicle!',
+                showConfirmButton: false,
+                timer: 2000
+            })
+            this.props.dispatch({ type: 'ADD_VEHICLE', payload: this.state });
+            this.props.history.push('/vehicle');        
+            }
         }
-    }
+
 
     handleClick = (event) => {
         event.preventDefault();

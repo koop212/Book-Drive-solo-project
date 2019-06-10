@@ -72,7 +72,7 @@ class UserPage extends Component {
           </div>
         </header>
         <h1 id="welcome">
-          Welcome, {this.props.user.username}!
+          Welcome, {this.props.user.first_name}!
       </h1>
       </div>
     )

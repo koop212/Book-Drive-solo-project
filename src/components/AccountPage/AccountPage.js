@@ -4,23 +4,26 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
 import { Grid, Table, TableBody, TableCell, TableHead, TableRow, Paper } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles'
-const styles = {
+import { withStyles } from '@material-ui/core/styles';
+import DeleteIcon from '@material-ui/icons/Delete';
+
+const styles = theme => ({
     carList: {
         width: '600px',
         textAlign: 'center',
-        marginTop: '80px',
+        margin: '80px',
         padding: '30px',
     },
     table: {
         textAlign: 'center',
         width: '600px',
     },
-    logOut: {
-        margin: '50px',
-        textAlign: 'center',
+    buttonDelete: {
+        '&:hover': {
+            color: 'red',
+        }
     }
-}
+})
 
 class AccountPage extends Component {
 
@@ -92,7 +95,7 @@ class AccountPage extends Component {
                                             return (
                                                 <TableRow key={i}>
                                                     <TableCell key={i}>{car.make} {car.model}</TableCell>
-                                                    <TableCell><button className="deleteBtn" onClick={() => this.deleteVehicle(car.id)}>Remove</button></TableCell>
+                                                    <TableCell><DeleteIcon className={this.props.classes.buttonDelete} onClick={() => this.deleteVehicle(car.id)}>Remove</DeleteIcon></TableCell>
                                                 </TableRow>
                                                 )  
                                         })}
@@ -103,9 +106,6 @@ class AccountPage extends Component {
                         </Paper>
                     </Grid>
                 </Grid>
-                <div className={this.props.classes.logOut}>
-                    <LogOutButton />
-                </div>
             </div>
         )
     }

@@ -8,6 +8,7 @@ class CarList extends Component {
     componentDidMount() {
         this.props.dispatch({type: 'FETCH_VEHICLE'})
         this.props.dispatch({type: 'FETCH_IMAGE'})
+        window.scrollTo(0, 0)
     }
 
     render() {
