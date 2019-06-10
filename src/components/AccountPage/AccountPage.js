@@ -22,6 +22,13 @@ const styles = theme => ({
         '&:hover': {
             color: 'red',
         }
+    },
+    car: {
+        fontWeight: 'bold',
+        fontSize: '20px',
+    },
+    title: {
+        fontSize: '30px',
     }
 })
 
@@ -34,19 +41,6 @@ class AccountPage extends Component {
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_OWNER_VEHICLE' });
         window.scrollTo(0, 0)
-    }
-
-    handleChange = (event) => {
-        this.setState({
-            email: event.target.value,
-        })
-    }
-
-    handleSubmit = (event) => {
-        event.preventDefault();
-        this.props.dispatch({type: 'UPDATE_EMAIL', payload: {email: this.state.email, id: this.props.reduxState.user.id}})
-        console.log('In handleSubmit');
-        this.refs.clear.value = '';
     }
 
 
@@ -80,7 +74,7 @@ class AccountPage extends Component {
                 <Grid container justify="center">
                     <Grid item>
                         <Paper className={this.props.classes.carList}>
-                            <h2>Your Vehicle List</h2>
+                            <h2 className={this.props.classes.title}>Your Vehicle List</h2>
                             <div className={this.props.classes.table}>
                             <Table >
                                 <TableHead>
@@ -94,7 +88,7 @@ class AccountPage extends Component {
                                         {this.props.reduxState.vehicleOwnerReducer.map((car, i) => {
                                             return (
                                                 <TableRow key={i}>
-                                                    <TableCell key={i}>{car.make} {car.model}</TableCell>
+                                                    <TableCell key={i}><span className={this.props.classes.car}>{car.make} {car.model}</span></TableCell>
                                                     <TableCell><DeleteIcon className={this.props.classes.buttonDelete} onClick={() => this.deleteVehicle(car.id)}>Remove</DeleteIcon></TableCell>
                                                 </TableRow>
                                                 )  

@@ -60,6 +60,7 @@ class MenuList extends React.Component {
     handleLogOut = () => {
         this.setState({ anchorEl: null });
         this.props.dispatch({ type: 'LOGOUT' });
+        this.props.history.push('/')
     };
 
   render() {

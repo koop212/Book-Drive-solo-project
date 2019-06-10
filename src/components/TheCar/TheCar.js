@@ -17,6 +17,7 @@ const styles = {
         fontSize: '40px',
         paddingLeft: '250px',
         justifyContent: 'space-around',
+        fontWeight: 'bold',
     },
     day: {
         fontSize: '20px',

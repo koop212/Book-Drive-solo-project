@@ -52,7 +52,7 @@ class UserPage extends Component {
                   }}
                   margin="dense"
                   variant="outlined"
-                  label="Search Location"
+                  placeholder="Search Location"
                   // style={{ height: 10 }}
                   className={this.props.classes.searchField}
                   // inputStyle={{ backgroundColor: 'white' }}

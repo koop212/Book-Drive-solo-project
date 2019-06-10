@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
-import { Paper, Grid } from '@material-ui/core'
+import { Paper, Grid, TextField } from '@material-ui/core'
 import '../LoginPage/LoginPage.css';
 
 
@@ -13,9 +13,12 @@ const styles = {
       marginTop: '70px',
       marginLeft: '100px',
       position: 'absolute',
-      top: '15%',
+      top: '8%',
       left: '55%',
       transform: 'translate(-50 %, -50 %)',
+    },
+    p: {
+      visibility: 'hidden'
     }
 }
 
@@ -87,9 +90,10 @@ class LoginPage extends Component {
               </h2>
             )}
             <form onSubmit={this.login}>
+              <p className={this.props.classes.p} onClick={this.handleLog}>P</p>
               <h1 onClick={this.handleClick}>Login</h1>
               <div>
-                <label htmlFor="username">
+                {/* <label htmlFor="username">
                   Username:
                 <input
                     type="text"
@@ -97,10 +101,20 @@ class LoginPage extends Component {
                     value={this.state.username}
                     onChange={this.handleInputChangeFor('username')}
                   />
-                </label>
+                </label> */}
+                  <TextField
+                    placeholder="Username"
+                    className={this.props.classes.input}
+                    type="text"
+                    variant="outlined"
+                    margin="dense"
+                    name="username"
+                    value={this.state.username}
+                    onChange={this.handleInputChangeFor('username')}
+                  />
               </div>
               <div>
-                <label onClick={this.handleLog} htmlFor="password">
+                {/* <label onClick={this.handleLog} htmlFor="password">
                   Password:
                 <input
                     type="password"
@@ -116,7 +130,23 @@ class LoginPage extends Component {
                   type="submit"
                   name="submit"
                   value="Log In"
-                />
+                /> */}
+                  <TextField
+                    placeholder="Password"
+                    className={this.props.classes.input}
+                    type="password"
+                    variant="outlined"
+                    margin="dense"
+                    name="password"
+                    value={this.state.password}
+                    onChange={this.handleInputChangeFor('password')}
+                  />
+                  <input
+                    className="log-in"
+                    type="submit"
+                    name="submit"
+                    value="Log In"
+                  />
               </div>
             </form>
             <button

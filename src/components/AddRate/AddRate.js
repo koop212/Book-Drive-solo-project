@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
+import { Button } from '@material-ui/core';
 
 class AddRate extends Component {
 
@@ -17,7 +18,8 @@ class AddRate extends Component {
 
     render() {
         return(
-            <p onClick={this.props.click}><button onClick={this.submitRate}>Submit</button></p>
+            <p onClick={this.props.click}><Button variant="contained"
+            color="primary" onClick={this.submitRate}>Submit</Button></p>
         )
     }
 }
