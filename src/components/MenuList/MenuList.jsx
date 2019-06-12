@@ -28,6 +28,10 @@ class MenuList extends React.Component {
         anchorEl: null,
     };
 
+    handleClose = () => {
+        this.setState({ anchorEl: null });
+    };
+
     handleClick = event => {
         this.setState({ anchorEl: event.currentTarget });
     };
@@ -71,11 +75,12 @@ class MenuList extends React.Component {
         <IconButton 
             aria-owns={anchorEl ? 'simple-menu' : undefined}
             aria-haspopup="true"
-            onClick={this.handleClick} 
             className={classes.menuButton} 
             color="inherit" 
             aria-label="Menu">
-            <MenuIcon />
+            <MenuIcon 
+            onClick={this.handleClick}
+        />
         </IconButton> 
         <Menu
           id="simple-menu"

@@ -16,11 +16,8 @@ const styles = {
       top: '8%',
       left: '55%',
       transform: 'translate(-50 %, -50 %)',
-    },
-    p: {
-      visibility: 'hidden'
     }
-}
+  }
 
 class LoginPage extends Component {
   state = {
@@ -68,7 +65,7 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div>
+      <div className={this.props.classes.main}>
         <div>
           <img className="loginImg" src="https://wallpapershome.com/images/wallpapers/jeep-switchback-2560x1440-hd-wallpaper-jeep-wrangler-suv-concept-13333.jpg" />
         </div>
@@ -90,21 +87,10 @@ class LoginPage extends Component {
               </h2>
             )}
             <form onSubmit={this.login}>
-              <p className={this.props.classes.p} onClick={this.handleLog}>P</p>
               <h1 onClick={this.handleClick}>Login</h1>
               <div>
-                {/* <label htmlFor="username">
-                  Username:
-                <input
-                    type="text"
-                    name="username"
-                    value={this.state.username}
-                    onChange={this.handleInputChangeFor('username')}
-                  />
-                </label> */}
                   <TextField
                     placeholder="Username"
-                    className={this.props.classes.input}
                     type="text"
                     variant="outlined"
                     margin="dense"
@@ -114,23 +100,6 @@ class LoginPage extends Component {
                   />
               </div>
               <div>
-                {/* <label onClick={this.handleLog} htmlFor="password">
-                  Password:
-                <input
-                    type="password"
-                    name="password"
-                    value={this.state.password}
-                    onChange={this.handleInputChangeFor('password')}
-                  />
-                </label>
-              </div>
-              <div>
-                <input
-                  className="log-in"
-                  type="submit"
-                  name="submit"
-                  value="Log In"
-                /> */}
                   <TextField
                     placeholder="Password"
                     className={this.props.classes.input}
